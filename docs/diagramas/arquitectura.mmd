@@ -1,0 +1,40 @@
+flowchart TB
+    CLI[Interfaz · CLI src.agente.cli<br/>escenario · caso · estado · memoria]
+    CLI --> G
+    subgraph ORQ [Orquestacion · LangGraph]
+      direction LR
+      GR[Guardrails EP1<br/>PII · alcance]
+      G[StateGraph EstadoCaso<br/>6 nodos · arista condicional]
+      PL[Planificador<br/>plantillas · eventos · replan]
+      GR --- G --- PL
+    end
+    G --> RAG & RZ & WR
+    G <--> CP & LP
+    subgraph HER [Herramientas]
+      direction LR
+      RAG[Consulta<br/>RAG hibrido EP1<br/>BM25 + denso + RRF]
+      RZ[Razonamiento<br/>calendario habil · prioridad<br/>requisitos · cumplimiento]
+      WR[Escritura<br/>sistema OIRS simulado]
+    end
+    subgraph DAT [Datos y memoria]
+      direction LR
+      CORP[(Corpus<br/>8 internos + 4 normativos)]
+      FER[(feriados_cl.json)]
+      OIRS[(registro_oirs.sqlite<br/>casos · tareas · documentos)]
+      CP[(checkpoints.sqlite<br/>memoria corto plazo)]
+      LP[(memoria_largo_plazo.sqlite<br/>vectores + metadata)]
+    end
+    RAG --> CORP
+    RZ --> FER
+    WR --> OIRS
+    classDef a fill:#eef4fb,stroke:#2c5d8f,color:#14283d
+    classDef b fill:#eef8f0,stroke:#2f7a43,color:#123018
+    classDef c fill:#f3eefb,stroke:#6b46a8,color:#25153d
+    classDef d fill:#fdecec,stroke:#b03a3a,color:#3d1010
+    class CLI,G,PL a
+    class RAG,RZ,WR b
+    class CORP,OIRS,CP,LP,FER c
+    class GR d
+    style ORQ fill:#fafafa,stroke:#9aa5b1
+    style HER fill:#fafafa,stroke:#9aa5b1
+    style DAT fill:#fafafa,stroke:#9aa5b1

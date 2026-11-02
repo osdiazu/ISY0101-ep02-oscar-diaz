@@ -1,0 +1,30 @@
+name: pruebas
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Versiones de frameworks
+        run: pip list | grep -iE "langgraph|langchain|scikit|numpy"
+      - name: Pruebas (RAG EP1 + agente EP2)
+        run: python -m pytest tests/ -v
+      - name: Escenarios de demostracion
+        run: |
+          python -m src.agente.cli reiniciar
+          python -m src.agente.cli todos
+      - name: Metricas RAG
+        run: python -m src.evaluate

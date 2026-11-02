@@ -1,0 +1,40 @@
+{
+  "id": "E2_ficha_tercero_dos_sesiones",
+  "titulo": "Copia de ficha pedida por un tercero sin mandato - caso que se suspende y se retoma",
+  "demuestra": [
+    "memoria de corto plazo (checkpoint por folio)",
+    "suspension y reactivacion de ramas del plan",
+    "continuidad en flujo prolongado"
+  ],
+  "folio": "OIRS-2026-0102",
+  "sesiones": [
+    {
+      "fecha": "2026-11-02",
+      "texto": "Solicito copia de la ficha clinica de mi hermano para un tramite de licencia.",
+      "datos": {
+        "tipo": "solicitud_ficha",
+        "solicitante": "tercero",
+        "antecedentes": [
+          "cedula_identidad"
+        ]
+      }
+    },
+    {
+      "fecha": "2026-11-06",
+      "texto": "Vuelvo con el mandato notarial firmado por mi hermano.",
+      "datos": {
+        "antecedentes": [
+          "cedula_identidad",
+          "mandato_notarial"
+        ]
+      }
+    }
+  ],
+  "esperado": {
+    "estados_por_sesion": [
+      "pendiente_antecedentes",
+      "respondido"
+    ],
+    "fecha_limite": "2026-11-13"
+  }
+}

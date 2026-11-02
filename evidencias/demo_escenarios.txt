@@ -1,0 +1,168 @@
+
+=== E1_reclamo_ges_incumplido | Reclamo por FCIP no entregado (GES) - deteccion de incumplimiento | folio OIRS-2026-0101
+
+--- sesion 1 (2026-11-02): Reclamo: el 20 de octubre a la paciente Maria Gonzalez Soto, RUT 12.345.678-9, le dijeron 
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'reclamo' banderas=['ges'] PII anonimizada={'rut': 1, 'telefono': 1, 'nombre': 1}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'reclamo' con 8 pasos -> R1:registrar_caso(p1) > R2:calcular_plazo(p1) > R3:evaluar_prioridad(p1) > R4:buscar_normativa(p2) > G1:buscar_normativa(p1) > G2:verificar_cumplimiento(p1) > R5:redactar_documento(p3) > R6:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] R2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-02', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-23'}
+  ▸ [s1 ejecutar          ] R3 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'alta', 'puntaje': 5, 'razones': ["base por tipo 'reclamo' = 2", "+3 por 'ges'"]}
+  ▸ [s1 ejecutar          ] G1 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]', 'citas': ['[EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]', '[PRO-001 | v4.2 | 2. Regla operativa central]', '[PRO-001 | v4.2 | 4. Plazos internos de gestion]']}
+  ▸ [s1 ejecutar          ] G2 [razonamiento] verificar_cumplimiento -> hecho: {'estado': 'incumplido', 'fecha_limite': '2026-10-21', 'dias_habiles_de_atraso': 8}
+  ◆ [s1 evaluar           ] condicion detectada tras G2: ['incumplimiento_ges'] -> replanificar
+  ⚡ [s1 planificar        ] incumplimiento_ges: FCIP incumplido (limite 2026-10-21, 8 dias habiles de atraso)
+  ↻ [s1 planificar        ] plan v2 por 'incumplimiento_ges': + G3 crear_tarea (prio 0): Corregir el incumplimiento GES antes de responder | ↑ R5 prioridad 3→1 (caso GES con incumplimiento)
+  ▸ [s1 ejecutar          ] G3 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 1, 'unidad': 'Subdireccion Clinica / Encargado GES', 'fecha_limite': '2026-11-02'}
+  ▸ [s1 ejecutar          ] R4 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', 'citas': ['[MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}
+  ▸ [s1 ejecutar          ] R5 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0101/01_respuesta_oirs.md', 'tipo_documento': 'respuesta_oirs', 'caracteres': 1840}
+  ▸ [s1 ejecutar          ] R6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'respondido', pasos {'hecho': 9, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  ◎ [s1 cierre            ] memoria largo plazo actualizada (casos=1, lecciones=1)
+  => estado=respondido prioridad=critica plan=v2 pasos={'hecho': 9, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-23
+
+=== E2_ficha_tercero_dos_sesiones | Copia de ficha pedida por un tercero sin mandato - caso que se suspende y se retoma | folio OIRS-2026-0102
+
+--- sesion 1 (2026-11-02): Solicito copia de la ficha clinica de mi hermano para un tramite de licencia.
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'solicitud_ficha' banderas=[] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'solicitud_ficha' con 8 pasos -> R1:registrar_caso(p1) > F2:buscar_normativa(p1) > F3:verificar_requisitos_ficha(p1) > F4:calcular_plazo(p2) > F5:evaluar_prioridad(p1) > F6:crear_tarea(p2) > F7:redactar_documento(p3) > F8:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] F2 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]', 'citas': ['[EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]', '[PRO-006 | v2.2 | 1. Principio]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}
+  ▸ [s1 ejecutar          ] F3 [razonamiento] verificar_requisitos_ficha -> hecho: {'cumple': False, 'faltantes': ['mandato_notarial'], 'requeridos': ['cedula_identidad', 'mandato_notarial'], 'fundamento': "PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'."}
+  ◆ [s1 evaluar           ] condicion detectada tras F3: ['faltan_antecedentes'] -> replanificar
+  ⚡ [s1 planificar        ] faltan_antecedentes: faltan: mandato_notarial
+  ↻ [s1 planificar        ] plan v2 por 'faltan_antecedentes': ~ F4 calcular_plazo suspendido | ~ F5 evaluar_prioridad suspendido | ~ F6 crear_tarea suspendido | ~ F7 redactar_documento suspendido | ~ F8 actualizar_estado_caso suspendido | + A1 redactar_documento (prio 1): Pedir los antecedentes faltantes (PRO-006 sec. 2) | + A2 actualizar_estado_caso (prio 2): El caso espera al usuario
+  ▸ [s1 ejecutar          ] A1 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0102/01_solicitud_antecedentes.md', 'tipo_documento': 'solicitud_antecedentes', 'caracteres': 461}
+  ▸ [s1 ejecutar          ] A2 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'pendiente_antecedentes', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'pendiente_antecedentes', pasos {'hecho': 5, 'pendiente': 0, 'suspendido': 5, 'omitido': 0, 'fallido': 0}
+  => estado=pendiente_antecedentes prioridad=media plan=v2 pasos={'hecho': 5, 'pendiente': 0, 'suspendido': 5, 'omitido': 0, 'fallido': 0} limite=None
+
+--- sesion 2 (2026-11-06): Vuelvo con el mandato notarial firmado por mi hermano.
+  ◆ [s2 ingreso           ] sesion 2: se retoma el caso desde el checkpoint (estado previo 'pendiente_antecedentes', plan v2, 12 entradas en bitacora); eventos=['antecedentes_recibidos']
+  ⚡ [s2 planificar        ] antecedentes_recibidos: antecedentes: ['cedula_identidad', 'mandato_notarial']
+  ↻ [s2 planificar        ] plan v3 por 'antecedentes_recibidos': + V1 verificar_requisitos_ficha (prio 1): Revalidar con los antecedentes recibidos | ↺ F4 calcular_plazo reactivado | ↺ F5 evaluar_prioridad reactivado | ↺ F6 crear_tarea reactivado | ↺ F7 redactar_documento reactivado | ↺ F8 actualizar_estado_caso reactivado
+  ▸ [s2 ejecutar          ] V1 [razonamiento] verificar_requisitos_ficha -> hecho: {'cumple': True, 'faltantes': [], 'requeridos': ['cedula_identidad', 'mandato_notarial'], 'fundamento': "PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'."}
+  ▸ [s2 ejecutar          ] F4 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-06', 'dias': 5, 'tipo': 'habiles', 'fecha_limite': '2026-11-13'}
+  ▸ [s2 ejecutar          ] F5 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'baja', 'puntaje': 1, 'razones': ["base por tipo 'solicitud_ficha' = 1"]}
+  ▸ [s2 ejecutar          ] F6 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 2, 'unidad': 'Archivo de fichas', 'fecha_limite': '2026-11-13'}
+  ▸ [s2 ejecutar          ] F7 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0102/02_respuesta_ficha.md', 'tipo_documento': 'respuesta_ficha', 'caracteres': 530}
+  ▸ [s2 ejecutar          ] F8 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}
+  ◆ [s2 cierre            ] fin de sesion 2: estado 'respondido', pasos {'hecho': 11, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  ◎ [s2 cierre            ] memoria largo plazo actualizada (casos=2, lecciones=1)
+  => estado=respondido prioridad=media plan=v3 pasos={'hecho': 11, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-13
+
+=== E3_reclamo_trato_escalamiento | Reclamo por trato vejatorio - escalamiento el mismo dia | folio OIRS-2026-0103
+
+--- sesion 1 (2026-11-03): Reclamo: el funcionario de admision me grito y me humillo delante de todos cuando pregunte
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'reclamo' banderas=['trato'] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'reclamo' con 7 pasos -> R1:registrar_caso(p1) > R2:calcular_plazo(p1) > R3:evaluar_prioridad(p1) > R4:buscar_normativa(p2) > T1:buscar_normativa(p1) > R5:redactar_documento(p3) > R6:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] R2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-03', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-24'}
+  ▸ [s1 ejecutar          ] R3 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'alta', 'puntaje': 6, 'razones': ["base por tipo 'reclamo' = 2", "+4 por 'trato'"]}
+  ▸ [s1 ejecutar          ] T1 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamos que involucren presunta negligencia, trato vejatorio o dano fisico se derivan el mismo dia a la Direccion y a Calidad y Seguridad del Paciente. [MAN-003 | v3.1 | 5. Escalamiento]', 'citas': ['[EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]', '[EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]', '[MAN-003 | v3.1 | 5. Escalamiento]']}
+  ◆ [s1 evaluar           ] condicion detectada tras T1: ['escalamiento_inmediato'] -> replanificar
+  ⚡ [s1 planificar        ] escalamiento_inmediato: MAN-003 sec. 5 exige derivar el mismo dia a Direccion y Calidad
+  ↻ [s1 planificar        ] plan v2 por 'escalamiento_inmediato': + E1 crear_tarea (prio 0): MAN-003 sec. 5: derivacion el mismo dia | + E2 redactar_documento (prio 0): Minuta formal para Direccion
+  ▸ [s1 ejecutar          ] E1 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 3, 'unidad': 'Direccion + Calidad y Seguridad del Paciente', 'fecha_limite': '2026-11-03'}
+  ▸ [s1 ejecutar          ] E2 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0103/01_minuta_escalamiento.md', 'tipo_documento': 'minuta_escalamiento', 'caracteres': 512}
+  ▸ [s1 ejecutar          ] R4 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', 'citas': ['[MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}
+  ▸ [s1 ejecutar          ] R5 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0103/02_respuesta_oirs.md', 'tipo_documento': 'respuesta_oirs', 'caracteres': 1476}
+  ▸ [s1 ejecutar          ] R6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'respondido', pasos {'hecho': 9, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  ◎ [s1 cierre            ] memoria largo plazo actualizada (casos=3, lecciones=2)
+  => estado=respondido prioridad=critica plan=v2 pasos={'hecho': 9, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-24
+
+=== E4_consulta_sin_respaldo | Consulta sin respaldo documental - abstencion y derivacion | folio OIRS-2026-0104
+
+--- sesion 1 (2026-11-03): Hola, el CESFAM tiene estacionamiento para visitas y cual es su tarifa mensual?
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'consulta' banderas=[] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'consulta' con 5 pasos -> R1:registrar_caso(p1) > C2:calcular_plazo(p1) > C3:buscar_normativa(p1) > C4:redactar_documento(p2) > C5:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] C2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-03', 'dias': 10, 'tipo': 'habiles', 'fecha_limite': '2026-11-17'}
+  ▸ [s1 ejecutar          ] C3 [consulta] buscar_normativa -> hecho: {'respaldo': False, 'respuesta_directa': 'No cuento con respaldo documental suficiente para responder esto.', 'citas': []}
+  ◆ [s1 evaluar           ] condicion detectada tras C3: ['sin_respaldo'] -> replanificar
+  ⚡ [s1 planificar        ] sin_respaldo: el RAG se abstuvo: no hay evidencia documental suficiente
+  ↻ [s1 planificar        ] plan v2 por 'sin_respaldo': - C4 redactar_documento omitido (no se responde sin respaldo documental) | - C5 actualizar_estado_caso omitido (no se responde sin respaldo documental) | + S1 crear_tarea (prio 1): Derivar a quien puede responder | + S2 redactar_documento (prio 2): Acuse al usuario informando la derivacion y el plazo | + S3 actualizar_estado_caso (prio 3): El caso queda derivado, no respondido
+  ▸ [s1 ejecutar          ] S1 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 4, 'unidad': 'Direccion (asignar unidad responsable)', 'fecha_limite': '2026-11-17'}
+  ▸ [s1 ejecutar          ] S2 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0104/01_acuse_derivacion.md', 'tipo_documento': 'acuse_derivacion', 'caracteres': 467}
+  ▸ [s1 ejecutar          ] S3 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'derivado', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'derivado', pasos {'hecho': 6, 'pendiente': 0, 'suspendido': 0, 'omitido': 2, 'fallido': 0}
+  ◎ [s1 cierre            ] memoria largo plazo actualizada (casos=4, lecciones=3)
+  => estado=derivado prioridad=media plan=v2 pasos={'hecho': 6, 'pendiente': 0, 'suspendido': 0, 'omitido': 2, 'fallido': 0} limite=2026-11-17
+
+=== E5_rescate_nsp_tres_sesiones | Rescate de paciente cronico - condiciones que cambian en el tiempo | folio SOME-2026-0201
+
+--- sesion 1 (2026-11-02): Paciente del programa cardiovascular con tres inasistencias consecutivas sin aviso a sus c
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'rescate_nsp' banderas=['mayor_80'] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'rescate_nsp' con 6 pasos -> R1:registrar_caso(p1) > N2:buscar_normativa(p1) > N3:calcular_plazo(p1) > N4:evaluar_prioridad(p1) > N5:crear_tarea(p1) > N6:actualizar_estado_caso(p2)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] N2 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Tres inasistencias consecutivas sin aviso en programas cronicos activan el protocolo de rescate: llamada telefonica dentro de 5 dias habiles, y si no hay contacto, visita domiciliaria del equipo de sector dentro de 15 dias habiles. [PRO-007 | v3.0 | 3. Inasistencia (NSP)]', 'citas': ['[PRO-001 | v4.2 | 2. Regla operativa central]', '[PRO-007 | v3.0 | 3. Inasistencia (NSP)]']}
+  ▸ [s1 ejecutar          ] N3 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-02', 'dias': 5, 'tipo': 'habiles', 'fecha_limite': '2026-11-09'}
+  ▸ [s1 ejecutar          ] N4 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'media', 'puntaje': 4, 'razones': ["base por tipo 'rescate_nsp' = 2", "+2 por 'mayor_80'"]}
+  ▸ [s1 ejecutar          ] N5 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 5, 'unidad': 'Equipo de sector', 'fecha_limite': '2026-11-09'}
+  ▸ [s1 ejecutar          ] N6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'en_seguimiento', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'en_seguimiento', pasos {'hecho': 6, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  => estado=en_seguimiento prioridad=media plan=v1 pasos={'hecho': 6, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-09
+
+--- sesion 2 (2026-11-09): Se llamo tres veces al telefono registrado y no hubo contacto.
+  ◆ [s2 ingreso           ] sesion 2: se retoma el caso desde el checkpoint (estado previo 'en_seguimiento', plan v1, 10 entradas en bitacora); eventos=['resultado_llamada']
+  ⚡ [s2 planificar        ] resultado_llamada: resultado de la llamada: sin_contacto
+  ↻ [s2 planificar        ] plan v2 por 'resultado_llamada': + N7 calcular_plazo (prio 1): Sin contacto: visita domiciliaria dentro de 15 dias habiles (PRO-007 sec. 3) | + N8 evaluar_prioridad (prio 1): Repriorizar con la nueva condicion | + N9 crear_tarea (prio 1): Programar la visita domiciliaria del equipo de sector | + N10 actualizar_estado_caso (prio 2): Cerrar la tarea de llamada y mantener el seguimiento
+  ▸ [s2 ejecutar          ] N7 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-09', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-30'}
+  ▸ [s2 ejecutar          ] N8 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'alta', 'puntaje': 5, 'razones': ["base por tipo 'rescate_nsp' = 2", "+2 por 'mayor_80'", "+1 por 'sin_contacto'"]}
+  ▸ [s2 ejecutar          ] N9 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 6, 'unidad': 'Equipo de sector', 'fecha_limite': '2026-11-30'}
+  ▸ [s2 ejecutar          ] N10 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'en_seguimiento', 'tareas_cerradas': 1}
+  ◆ [s2 cierre            ] fin de sesion 2: estado 'en_seguimiento', pasos {'hecho': 10, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  => estado=en_seguimiento prioridad=alta plan=v2 pasos={'hecho': 10, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-30
+
+--- sesion 3 (2026-11-10): La autoridad decreta feriado regional el 20 de noviembre.
+  ◆ [s3 ingreso           ] sesion 3: se retoma el caso desde el checkpoint (estado previo 'en_seguimiento', plan v2, 18 entradas en bitacora); eventos=['feriado_agregado']
+  ⚡ [s3 planificar        ] feriado_agregado: se decreta feriado el 2026-11-20
+  ↻ [s3 planificar        ] plan v3 por 'feriado_agregado': + H1 calcular_plazo (prio 0): Recalcular plazo por feriado nuevo (2026-11-20) | + H2 actualizar_estado_caso (prio 1): Dejar constancia del nuevo plazo en el sistema OIRS
+  ▸ [s3 ejecutar          ] H1 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-09', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-12-01'}
+  ▸ [s3 ejecutar          ] H2 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'en_seguimiento', 'tareas_cerradas': 0}
+  ◆ [s3 cierre            ] fin de sesion 3: estado 'en_seguimiento', pasos {'hecho': 12, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  => estado=en_seguimiento prioridad=alta plan=v3 pasos={'hecho': 12, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-12-01
+
+=== E6_memoria_largo_plazo | Reclamo similar a uno anterior - la memoria de largo plazo cambia el plan | folio OIRS-2026-0105
+
+--- sesion 1 (2026-11-04): Reclamo: a mi padre le dijeron que tenia sospecha de cancer y nunca le entregaron el formu
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'reclamo' banderas=[] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 2 casos y 2 lecciones similares (mejor: OIRS-2026-0101 sim=0.611)
+  ▤ [s1 planificar        ] plan v1: plantilla 'reclamo' con 6 pasos; memoria: leccion similar (0.558) del folio OIRS-2026-0101 -> se agrega verificacion preventiva de FCIP/GES -> R1:registrar_caso(p1) > R2:calcular_plazo(p1) > R3:evaluar_prioridad(p1) > R4:buscar_normativa(p2) > G1:buscar_normativa(p1) > G2:verificar_cumplimiento(p1) > R5:redactar_documento(p3) > R6:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] R2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-04', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-26'}
+  ▸ [s1 ejecutar          ] R3 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'baja', 'puntaje': 2, 'razones': ["base por tipo 'reclamo' = 2"]}
+  ▸ [s1 ejecutar          ] G1 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]', 'citas': ['[EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]', '[PRO-001 | v4.2 | 2. Regla operativa central]', '[PRO-001 | v4.2 | 4. Plazos internos de gestion]']}
+  ▸ [s1 ejecutar          ] G2 [razonamiento] verificar_cumplimiento -> hecho: {'estado': 'cumplido', 'fecha_limite': '2026-10-29', 'dias_habiles_de_atraso': 0}
+  ▸ [s1 ejecutar          ] R4 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', 'citas': ['[MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}
+  ▸ [s1 ejecutar          ] R5 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0105/01_respuesta_oirs.md', 'tipo_documento': 'respuesta_oirs', 'caracteres': 1559}
+  ▸ [s1 ejecutar          ] R6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'respondido', pasos {'hecho': 8, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  ◎ [s1 cierre            ] memoria largo plazo actualizada (casos=5, lecciones=3)
+  => estado=respondido prioridad=media plan=v1 pasos={'hecho': 8, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-26
+
+=== E7_falla_y_reintento | Falla transitoria del sistema OIRS - reintento automatico | folio OIRS-2026-0106
+
+--- sesion 1 (2026-11-05): Quiero cambiarme de CESFAM, que documentos necesito y cuanto demora?
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'consulta' banderas=[] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'consulta' con 5 pasos -> R1:registrar_caso(p1) > C2:calcular_plazo(p1) > C3:buscar_normativa(p1) > C4:redactar_documento(p2) > C5:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> fallido: {'_error': 'FalloSimulado: registrar_caso: servicio no disponible (falla simulada)'}
+  ◆ [s1 evaluar           ] condicion detectada tras R1: ['reintento'] -> replanificar
+  ⚡ [s1 planificar        ] reintento: FalloSimulado: registrar_caso: servicio no disponible (falla simulada)
+  ↻ [s1 planificar        ] plan v2 por 'reintento': ↻ R1 registrar_caso se reintenta
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] C2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-05', 'dias': 10, 'tipo': 'habiles', 'fecha_limite': '2026-11-19'}
+  ▸ [s1 ejecutar          ] C3 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'El cambio se hace efectivo dentro de 10 dias habiles. [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]', 'citas': ['[FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]', '[PRO-002 | v2.7 | 4. Contrarreferencia]']}
+  ▸ [s1 ejecutar          ] C4 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0106/01_respuesta_consulta.md', 'tipo_documento': 'respuesta_consulta', 'caracteres': 335}
+  ▸ [s1 ejecutar          ] C5 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'respondido', pasos {'hecho': 5, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  ◎ [s1 cierre            ] memoria largo plazo actualizada (casos=6, lecciones=3)
+  => estado=respondido prioridad=media plan=v2 pasos={'hecho': 5, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0} limite=2026-11-19
+
+Evidencias escritas en evidencias/escenarios/

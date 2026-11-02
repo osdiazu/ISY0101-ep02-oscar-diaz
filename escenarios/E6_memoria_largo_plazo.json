@@ -1,0 +1,28 @@
+{
+  "id": "E6_memoria_largo_plazo",
+  "titulo": "Reclamo similar a uno anterior - la memoria de largo plazo cambia el plan",
+  "demuestra": [
+    "recuperacion semantica de lecciones entre casos",
+    "paso preventivo agregado por memoria (origen=memoria)"
+  ],
+  "folio": "OIRS-2026-0105",
+  "requiere": [
+    "E1_reclamo_ges_incumplido"
+  ],
+  "sesiones": [
+    {
+      "fecha": "2026-11-04",
+      "texto": "Reclamo: a mi padre le dijeron que tenia sospecha de cancer y nunca le entregaron el formulario ni lo citaron.",
+      "datos": {
+        "tipo": "reclamo",
+        "fecha_sospecha": "2026-10-28",
+        "fecha_fcip": "2026-10-28",
+        "edad": 71
+      }
+    }
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "paso_origen_memoria": true
+  }
+}

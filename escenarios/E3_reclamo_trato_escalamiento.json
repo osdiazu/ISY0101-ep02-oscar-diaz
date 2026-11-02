@@ -1,0 +1,25 @@
+{
+  "id": "E3_reclamo_trato_escalamiento",
+  "titulo": "Reclamo por trato vejatorio - escalamiento el mismo dia",
+  "demuestra": [
+    "decision basada en conocimiento recuperado (MAN-003 sec. 5)",
+    "insercion de pasos criticos que se adelantan en la cola"
+  ],
+  "folio": "OIRS-2026-0103",
+  "sesiones": [
+    {
+      "fecha": "2026-11-03",
+      "texto": "Reclamo: el funcionario de admision me grito y me humillo delante de todos cuando pregunte por mi hora. Exijo que se tomen medidas.",
+      "datos": {
+        "tipo": "reclamo"
+      }
+    }
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "prioridad": "critica",
+    "eventos": [
+      "escalamiento_inmediato"
+    ]
+  }
+}

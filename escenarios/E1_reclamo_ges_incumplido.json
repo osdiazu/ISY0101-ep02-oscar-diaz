@@ -1,0 +1,29 @@
+{
+  "id": "E1_reclamo_ges_incumplido",
+  "titulo": "Reclamo por FCIP no entregado (GES) - deteccion de incumplimiento",
+  "demuestra": [
+    "herramientas de consulta, razonamiento y escritura",
+    "replanificacion por incumplimiento GES",
+    "escalamiento de prioridad"
+  ],
+  "folio": "OIRS-2026-0101",
+  "sesiones": [
+    {
+      "fecha": "2026-11-02",
+      "texto": "Reclamo: el 20 de octubre a la paciente Maria Gonzalez Soto, RUT 12.345.678-9, le dijeron en el box que tenia sospecha de cancer GES y nunca le entregaron el formulario FCIP ni la citaron. Contacto +56 9 8765 4321.",
+      "datos": {
+        "tipo": "reclamo",
+        "fecha_sospecha": "2026-10-20",
+        "fecha_fcip": "",
+        "edad": 67
+      }
+    }
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "prioridad": "critica",
+    "eventos": [
+      "incumplimiento_ges"
+    ]
+  }
+}

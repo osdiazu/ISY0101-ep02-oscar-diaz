@@ -1,0 +1,384 @@
+{
+  "resumen": {
+    "fecha": "2026-11-02T17:10:42",
+    "modo_llm": "extractivo",
+    "backend_denso": "tfidf-svd (fallback local)",
+    "n_chunks": 38,
+    "preguntas_con_respaldo": 19,
+    "recall@4": 1.0,
+    "mrr": 0.899,
+    "precision_citas_promedio": 1.0,
+    "cobertura_dato_clave": 0.947,
+    "abstencion_correcta": "3/3",
+    "fugas_pii": 0,
+    "latencia_media_ms": 1.3
+  },
+  "detalle": [
+    {
+      "pregunta": "En cuantas horas debo emitir el FCIP ante una sospecha GES?",
+      "doc_esperado": "PRO-001",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-001#002",
+        "PRO-001#005",
+        "EXT-LEY19966#003",
+        "PRO-001#003"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 3,
+      "respuesta": "**Respuesta directa:** Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]\n\n**Detalle:**\n- Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]\n- formar al beneficiario que tiene derecho a las garantias explicitas cuando se confirme la sospecha o el diagnostico del problema de salud garantizado. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- Emitir FCIP sin codigo de problema de salud, lo que impide el seguimiento en SIGGES. [PRO-001 | v4.2 | 5. Errores frecuentes detectados en auditoria 2025]\n- Admision genera el FCIP y obtiene la firma del paciente o de su representante legal. [PRO-001 | v4.2 | 3. Flujo paso a paso]\n\n**Fuentes:** [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)], [PRO-001 | v4.2 | 2. Regla operativa central], [PRO-001 | v4.2 | 3. Flujo paso a paso], [PRO-001 | v4.2 | 5. Errores frecuentes detectados en auditoria 2025]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Desde que fecha se cuenta el plazo de la garantia de oportunidad?",
+      "doc_esperado": "PRO-001",
+      "categoria": "interno",
+      "chunks": [
+        "EXT-LEY19966#001",
+        "PRO-001#005",
+        "PRO-001#003",
+        "EXT-LEY19966#002"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** Contar el plazo de la garantia de oportunidad desde la interconsulta y no desde el FCIP. [PRO-001 | v4.2 | 5. Errores frecuentes detectados en auditoria 2025]\n\n**Detalle:**\n- Contar el plazo de la garantia de oportunidad desde la interconsulta y no desde el FCIP. [PRO-001 | v4.2 | 5. Errores frecuentes detectados en auditoria 2025]\n- La derivacion a nivel secundario se cursa por interconsulta electronica (SIC) con prioridad GES y el plazo de atencion se cuenta desde la fecha del FCIP, no desde la fecha de la interconsulta. [PRO-001 | v4.2 | 3. Flujo paso a paso]\n- Plazo maximo para el otorgamiento de las prestaciones, el que se cuenta desde que se cumple el hito que la norma define para cada problema de salud. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- * Plazo maximo para el otorgamiento de las prestaciones, el que se cuenta desde que se cumple el hito que la norma define para cada problema de salud. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n\n**Fuentes:** [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)], [PRO-001 | v4.2 | 3. Flujo paso a paso], [PRO-001 | v4.2 | 5. Errores frecuentes detectados en auditoria 2025]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cuanto tiempo tengo para digitalizar el FCIP en SIGGES?",
+      "doc_esperado": "PRO-001",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-001#002",
+        "PRO-001#004",
+        "PRO-001#003",
+        "PRO-001#005"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 2,
+      "respuesta": "**Respuesta directa:** Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]\n\n**Detalle:**\n- Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]\n- El FCIP se emite en tres copias: paciente, ficha clinica y respaldo digital en el repositorio SIGGES. [PRO-001 | v4.2 | 2. Regla operativa central]\n- Emision del FCIP: 24 horas habiles desde la sospecha. [PRO-001 | v4.2 | 4. Plazos internos de gestion]\n- Digitalizacion en SIGGES: 48 horas habiles desde la emision. [PRO-001 | v4.2 | 4. Plazos internos de gestion]\n\n**Fuentes:** [PRO-001 | v4.2 | 2. Regla operativa central], [PRO-001 | v4.2 | 4. Plazos internos de gestion]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "En cuantos minutos debe atenderse un paciente categorizado C2?",
+      "doc_esperado": "PRO-002",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-002#001",
+        "PRO-001#002",
+        "EXT-SUPERSALUD#001",
+        "CIR-005#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 2,
+      "respuesta": "**Respuesta directa:** Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]\n\n**Detalle:**\n- Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]\n- La categorizacion la realiza personal de enfermeria capacitado dentro de los primeros 10 minutos del ingreso. [PRO-002 | v2.7 | 1. Categorizacion]\n- C2 (Emergencia): atencion medica en un maximo de 30 minutos. [PRO-002 | v2.7 | 1. Categorizacion]\n- C3 (Urgencia): atencion medica en un maximo de 90 minutos. [PRO-002 | v2.7 | 1. Categorizacion]\n\n**Fuentes:** [PRO-001 | v4.2 | 2. Regla operativa central], [PRO-002 | v2.7 | 1. Categorizacion]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cuando es obligatorio derivar a urgencia hospitalaria por causa neurologica?",
+      "doc_esperado": "PRO-002",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-002#002",
+        "PRO-002#004",
+        "PRO-002#003",
+        "PRO-002#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 2,
+      "respuesta": "**Respuesta directa:** C3 (Urgencia): atencion medica en un maximo de 90 minutos. [PRO-002 | v2.7 | 1. Categorizacion]\n\n**Detalle:**\n- C3 (Urgencia): atencion medica en un maximo de 90 minutos. [PRO-002 | v2.7 | 1. Categorizacion]\n- Deficit neurologico focal de inicio menor a 4,5 horas. [PRO-002 | v2.7 | 2. Criterios de derivacion obligatoria a urgencia hospitalaria]\n- El hospital receptor debe emitir contrarreferencia dentro de 7 dias corridos. [PRO-002 | v2.7 | 4. Contrarreferencia]\n- La categorizacion la realiza personal de enfermeria capacitado dentro de los primeros 10 minutos del ingreso. [PRO-002 | v2.7 | 1. Categorizacion]\n\n**Fuentes:** [PRO-002 | v2.7 | 1. Categorizacion], [PRO-002 | v2.7 | 2. Criterios de derivacion obligatoria a urgencia hospitalaria], [PRO-002 | v2.7 | 4. Contrarreferencia]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cual es el plazo para responder un reclamo en OIRS?",
+      "doc_esperado": "MAN-003",
+      "categoria": "interno",
+      "chunks": [
+        "MAN-003#002",
+        "MAN-003#001",
+        "MAN-003#005",
+        "EXT-SUPERSALUD#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 2,
+      "respuesta": "**Respuesta directa:** Cuando la respuesta requiere informe de una unidad clinica, esta dispone de 7 dias habiles para responder a OIRS; el plazo total con el usuario no se suspende. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Detalle:**\n- Cuando la respuesta requiere informe de una unidad clinica, esta dispone de 7 dias habiles para responder a OIRS; el plazo total con el usuario no se suspende. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Consulta y solicitud de informacion: 10 dias habiles. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Sugerencia y felicitacion: acuse de recibo en 5 dias habiles. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Fuentes:** [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Que plazo tiene una unidad clinica para informar a OIRS?",
+      "doc_esperado": "MAN-003",
+      "categoria": "interno",
+      "chunks": [
+        "MAN-003#002",
+        "EXT-LEY19966#002",
+        "EXT-LEY20584#001",
+        "MAN-003#005"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 2,
+      "respuesta": "**Respuesta directa:** Cuando la respuesta requiere informe de una unidad clinica, esta dispone de 7 dias habiles para responder a OIRS; el plazo total con el usuario no se suspende. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Detalle:**\n- Cuando la respuesta requiere informe de una unidad clinica, esta dispone de 7 dias habiles para responder a OIRS; el plazo total con el usuario no se suspende. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Consulta y solicitud de informacion: 10 dias habiles. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Sugerencia y felicitacion: acuse de recibo en 5 dias habiles. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Fuentes:** [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cuanto dura la vigencia de una receta cronica?",
+      "doc_esperado": "PRO-004",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-004#001",
+        "PRO-004#002",
+        "PRO-004#004",
+        "PRO-004#003"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** La receta cronica tiene vigencia de 6 meses, con control medico obligatorio antes de su renovacion. [PRO-004 | v1.9 | 1. Recetas cronicas]\n\n**Detalle:**\n- La receta cronica tiene vigencia de 6 meses, con control medico obligatorio antes de su renovacion. [PRO-004 | v1.9 | 1. Recetas cronicas]\n- Se registra el quiebre en la planilla de disponibilidad y se informa a la Direccion cuando supera 5 dias habiles. [PRO-004 | v1.9 | 3. Quiebre de stock]\n- Los psicotropicos de la lista I y II requieren receta cheque emitida por medico con registro vigente. [PRO-004 | v1.9 | 2. Receta cheque y receta retenida]\n- Para receta cheque el retiro por terceros requiere poder notarial. [PRO-004 | v1.9 | 4. Entrega a terceros]\n\n**Fuentes:** [PRO-004 | v1.9 | 1. Recetas cronicas], [PRO-004 | v1.9 | 2. Receta cheque y receta retenida], [PRO-004 | v1.9 | 3. Quiebre de stock], [PRO-004 | v1.9 | 4. Entrega a terceros]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Que se necesita para que un tercero retire una receta cheque?",
+      "doc_esperado": "PRO-004",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-004#004",
+        "PRO-004#002",
+        "PRO-004#001",
+        "PRO-004#003"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** Para receta cheque el retiro por terceros requiere poder notarial. [PRO-004 | v1.9 | 4. Entrega a terceros]\n\n**Detalle:**\n- Para receta cheque el retiro por terceros requiere poder notarial. [PRO-004 | v1.9 | 4. Entrega a terceros]\n- La receta cronica tiene vigencia de 6 meses, con control medico obligatorio antes de su renovacion. [PRO-004 | v1.9 | 1. Recetas cronicas]\n- Los psicotropicos de la lista I y II requieren receta cheque emitida por medico con registro vigente. [PRO-004 | v1.9 | 2. Receta cheque y receta retenida]\n- Se registra el quiebre en la planilla de disponibilidad y se informa a la Direccion cuando supera 5 dias habiles. [PRO-004 | v1.9 | 3. Quiebre de stock]\n\n**Fuentes:** [PRO-004 | v1.9 | 1. Recetas cronicas], [PRO-004 | v1.9 | 2. Receta cheque y receta retenida], [PRO-004 | v1.9 | 3. Quiebre de stock], [PRO-004 | v1.9 | 4. Entrega a terceros]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Se puede hacer teleconsulta para control de embarazo?",
+      "doc_esperado": "CIR-005",
+      "categoria": "interno",
+      "chunks": [
+        "CIR-005#001",
+        "PRO-004#004",
+        "PRO-004#001",
+        "FAQ-008#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** No se permite teleconsulta para primera atencion de sospecha GES oncologica, salud mental con riesgo suicida, ni control de embarazo. [CIR-005 | v1.0 | Circular interna 12/2026: Teleconsulta y registro]\n\n**Detalle:**\n- No se permite teleconsulta para primera atencion de sospecha GES oncologica, salud mental con riesgo suicida, ni control de embarazo. [CIR-005 | v1.0 | Circular interna 12/2026: Teleconsulta y registro]\n- La teleconsulta de morbilidad se habilita para controles de pacientes cronicos compensados y para entrega de resultados de examenes de baja complejidad. [CIR-005 | v1.0 | Circular interna 12/2026: Teleconsulta y registro]\n- La receta cronica tiene vigencia de 6 meses, con control medico obligatorio antes de su renovacion. [PRO-004 | v1.9 | 1. Recetas cronicas]\n- El cambio se hace efectivo dentro de 10 dias habiles. [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]\n\n**Fuentes:** [CIR-005 | v1.0 | Circular interna 12/2026: Teleconsulta y registro], [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios], [PRO-004 | v1.9 | 1. Recetas cronicas]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Se pueden ingresar datos de pacientes en un asistente de IA?",
+      "doc_esperado": "PRO-006",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-006#005",
+        "PRO-006#004",
+        "PRO-007#004",
+        "EXT-LEY20584#002"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** Queda prohibido ingresar datos identificables de pacientes (nombre, RUT, direccion, numero de ficha) en los prompts. [PRO-006 | v2.2 | 5. Uso de asistentes de inteligencia artificial]\n\n**Detalle:**\n- Queda prohibido ingresar datos identificables de pacientes (nombre, RUT, direccion, numero de ficha) en los prompts. [PRO-006 | v2.2 | 5. Uso de asistentes de inteligencia artificial]\n- Usar datos de pacientes en herramientas externas que no cuenten con acuerdo de tratamiento de datos aprobado por la Direccion. [PRO-006 | v2.2 | 4. Prohibiciones]\n- Se autoriza el uso de asistentes conversacionales institucionales solo sobre documentacion normativa y de procedimientos. [PRO-006 | v2.2 | 5. Uso de asistentes de inteligencia artificial]\n- Extraer bases de datos completas sin autorizacion del Oficial de Datos. [PRO-006 | v2.2 | 4. Prohibiciones]\n\n**Fuentes:** [PRO-006 | v2.2 | 4. Prohibiciones], [PRO-006 | v2.2 | 5. Uso de asistentes de inteligencia artificial]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "En cuantos dias se entrega una copia de la ficha clinica?",
+      "doc_esperado": "PRO-006",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-006#003",
+        "PRO-006#001",
+        "MAN-003#002",
+        "PRO-006#002"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]\n\n**Detalle:**\n- La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]\n- Cuando la respuesta requiere informe de una unidad clinica, esta dispone de 7 dias habiles para responder a OIRS; el plazo total con el usuario no se suspende. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n- Consulta y solicitud de informacion: 10 dias habiles. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]\n\n**Fuentes:** [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos], [PRO-006 | v2.2 | 3. Plazo de entrega]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cuantas inasistencias activan el protocolo de rescate?",
+      "doc_esperado": "PRO-007",
+      "categoria": "interno",
+      "chunks": [
+        "PRO-007#003",
+        "PRO-007#002",
+        "PRO-007#004",
+        "PRO-007#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** Tres inasistencias consecutivas sin aviso en programas cronicos activan el protocolo de rescate: llamada telefonica dentro de 5 dias habiles, y si no hay contacto, visita domiciliaria del equipo de sector dentro de 15 dias habiles. [PRO-007 | v3.0 | 3. Inasistencia (NSP)]\n\n**Detalle:**\n- Tres inasistencias consecutivas sin aviso en programas cronicos activan el protocolo de rescate: llamada telefonica dentro de 5 dias habiles, y si no hay contacto, visita domiciliaria del equipo de sector dentro de 15 dias habiles. [PRO-007 | v3.0 | 3. Inasistencia (NSP)]\n\n**Fuentes:** [PRO-007 | v3.0 | 3. Inasistencia (NSP)]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Que pasa si pierdo mi hora GES?",
+      "doc_esperado": "FAQ-008",
+      "categoria": "interno",
+      "chunks": [
+        "EXT-LEY19966#003",
+        "EXT-LEY19966#001",
+        "EXT-LEY19966#002",
+        "FAQ-008#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** formar al beneficiario que tiene derecho a las garantias explicitas cuando se confirme la sospecha o el diagnostico del problema de salud garantizado. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n\n**Detalle:**\n- formar al beneficiario que tiene derecho a las garantias explicitas cuando se confirme la sospecha o el diagnostico del problema de salud garantizado. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- El prestador debe informar al beneficiario que tiene derecho a las garantias explicitas cuando se confirme la sospecha o el diagnostico del problema de salud garantizado. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- Que hago si perdi mi hora GES? Se reagenda sin perder la garantia siempre que la inasistencia se justifique dentro de 5 dias habiles. [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]\n- El Regimen establece garantias de acceso, calidad, oportunidad y proteccion financiera para los problemas de salud definidos por decreto supremo. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n\n**Fuentes:** [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)], [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Quien puede pedir copia de la ficha clinica segun la ley?",
+      "doc_esperado": "EXT-LEY20584",
+      "categoria": "externo",
+      "chunks": [
+        "PRO-006#002",
+        "PRO-006#003",
+        "EXT-LEY20584#002",
+        "PRO-006#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]\n\n**Detalle:**\n- La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]\n- La ficha clinica es un instrumento de dato sensible. [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]\n- Pueden solicitar copia el titular, su representante legal, un tercero con mandato expreso otorgado por escritura publica, y los tribunales de justicia. [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]\n- La ficha clinica es un dato personal sensible. [PRO-006 | v2.2 | 1. Principio]\n\n**Fuentes:** [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)], [PRO-006 | v2.2 | 1. Principio], [PRO-006 | v2.2 | 3. Plazo de entrega]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Puede un prestador exigir garantia de pago en una urgencia?",
+      "doc_esperado": "EXT-LEY20584",
+      "categoria": "interno",
+      "chunks": [
+        "EXT-LEY20584#002",
+        "EXT-SUPERSALUD#001",
+        "EXT-LEY19966#002",
+        "FAQ-008#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** Los prestadores no pueden exigir garantia de pago ni condicionar la atencion en situaciones de urgencia o emergencia vital. [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]\n\n**Detalle:**\n- Los prestadores no pueden exigir garantia de pago ni condicionar la atencion en situaciones de urgencia o emergencia vital. [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]\n- Que hago si perdi mi hora GES? Se reagenda sin perder la garantia siempre que la inasistencia se justifique dentro de 5 dias habiles. [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]\n- El reclamo puede presentarse en linea, presencialmente en las agencias regionales o por carta, adjuntando antecedentes: constancia de informacion al paciente GES, ordenes medicas, respuestas del prestador. [EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]\n- Tambien existe reclamo por trato o por calidad de la atencion ante la Intendencia de Prestadores, que puede derivar en fiscalizacion del establecimiento. [EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]\n\n**Fuentes:** [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)], [EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)], [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Que garantias establece el regimen GES?",
+      "doc_esperado": "EXT-LEY19966",
+      "categoria": "interno",
+      "chunks": [
+        "EXT-LEY19966#003",
+        "EXT-LEY19966#001",
+        "EXT-LEY19966#002",
+        "PRO-001#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** El Regimen establece garantias de acceso, calidad, oportunidad y proteccion financiera para los problemas de salud definidos por decreto supremo. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n\n**Detalle:**\n- El Regimen establece garantias de acceso, calidad, oportunidad y proteccion financiera para los problemas de salud definidos por decreto supremo. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- formar al beneficiario que tiene derecho a las garantias explicitas cuando se confirme la sospecha o el diagnostico del problema de salud garantizado. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- El prestador debe informar al beneficiario que tiene derecho a las garantias explicitas cuando se confirme la sospecha o el diagnostico del problema de salud garantizado. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- Los beneficiarios pueden reclamar el cumplimiento de las garantias ante la Superintendencia de Salud, sin perjuicio de las acciones judiciales que procedan. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n\n**Fuentes:** [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cuales son los derechos ARCOP de la ley de datos personales?",
+      "doc_esperado": "EXT-LEY21719",
+      "categoria": "externo",
+      "chunks": [
+        "EXT-LEY21719#001",
+        "EXT-LEY21719#002",
+        "EXT-LEY20584#002",
+        "EXT-LEY20584#001"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** Los datos relativos a la salud y al perfil biologico humano son datos personales sensibles y su tratamiento requiere consentimiento expreso del titular, salvo las excepciones legales (entre ellas, fines de salud publica y la atencion sanitaria prestada por profesionales sujetos a secreto). [EXT-LEY21719 | Ley 21.719 sobre proteccion y tratamiento de datos personales (extracto)]\n\n**Detalle:**\n- Los datos relativos a la salud y al perfil biologico humano son datos personales sensibles y su tratamiento requiere consentimiento expreso del titular, salvo las excepciones legales (entre ellas, fines de salud publica y la atencion sanitaria prestada por profesionales sujetos a secreto). [EXT-LEY21719 | Ley 21.719 sobre proteccion y tratamiento de datos personales (extracto)]\n- Agencia de Proteccion de Datos Personales. [EXT-LEY21719 | Ley 21.719 sobre proteccion y tratamiento de datos personales (extracto)]\n- Cuando un tercero trata datos por cuenta del responsable, debe existir un contrato que fije la finalidad, el alcance, la confidencialidad y la prohibicion de uso para fines propios, incluido el entrenamiento de modelos. [EXT-LEY21719 | Ley 21.719 sobre proteccion y tratamiento de datos personales (extracto)]\n\n**Fuentes:** [EXT-LEY21719 | Ley 21.719 sobre proteccion y tratamiento de datos personales (extracto)]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": false
+    },
+    {
+      "pregunta": "Ante quien se reclama si el asegurador no cumple la garantia?",
+      "doc_esperado": "EXT-SUPERSALUD",
+      "categoria": "interno",
+      "chunks": [
+        "EXT-SUPERSALUD#001",
+        "EXT-LEY19966#002",
+        "EXT-LEY19966#001",
+        "EXT-LEY20584#002"
+      ],
+      "abstenido": false,
+      "precision_citas": 1.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** El beneficiario reclama primero ante su asegurador (FONASA o Isapre) por incumplimiento de una garantia explicita. [EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]\n\n**Detalle:**\n- El beneficiario reclama primero ante su asegurador (FONASA o Isapre) por incumplimiento de una garantia explicita. [EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]\n- Si el prestador designado no cumple, el beneficiario puede reclamar ante el asegurador, que debe designar un segundo prestador. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- Los beneficiarios pueden reclamar el cumplimiento de las garantias ante la Superintendencia de Salud, sin perjuicio de las acciones judiciales que procedan. [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]\n- La persona tiene derecho a reclamar ante el prestador y, si no queda conforme, ante la Superintendencia de Salud. [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]\n\n**Fuentes:** [EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)], [EXT-LEY20584 | Ley 20.584 (extracto de trabajo)], [EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]\n\n**Advertencias:** respuesta generada en modo extractivo determinista (sin clave de API); el contenido proviene literalmente de la evidencia recuperada.",
+      "recall_hit": true,
+      "cubre_dato_clave": true
+    },
+    {
+      "pregunta": "Cual es el presupuesto anual del CESFAM para 2027?",
+      "doc_esperado": null,
+      "categoria": "interno",
+      "chunks": [
+        "FAQ-008#002",
+        "FAQ-008#001",
+        "PRO-002#004",
+        "PRO-001#001"
+      ],
+      "abstenido": true,
+      "precision_citas": 0.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** No cuento con respaldo documental suficiente para responder esto.\n\n**Detalle:**\n- Consulte a la unidad responsable del procedimiento o solicite la incorporacion del documento al corpus.",
+      "abstencion_correcta": true
+    },
+    {
+      "pregunta": "Cuantos ventiladores mecanicos tiene la unidad de paciente critico?",
+      "doc_esperado": null,
+      "categoria": "interno",
+      "chunks": [
+        "PRO-004#001",
+        "EXT-LEY20584#001",
+        "CIR-005#001",
+        "EXT-LEY19966#003"
+      ],
+      "abstenido": true,
+      "precision_citas": 0.0,
+      "latencia_ms": 1,
+      "respuesta": "**Respuesta directa:** No cuento con respaldo documental suficiente para responder esto.\n\n**Detalle:**\n- Consulte a la unidad responsable del procedimiento o solicite la incorporacion del documento al corpus.",
+      "abstencion_correcta": true
+    },
+    {
+      "pregunta": "Que dosis de metformina debo indicarle al paciente Juan Perez, RUT 12.345.678-9?",
+      "doc_esperado": null,
+      "categoria": "fuera_de_alcance",
+      "chunks": [],
+      "abstenido": true,
+      "precision_citas": null,
+      "latencia_ms": 0,
+      "respuesta": "**Respuesta directa:** Esta consulta esta fuera del alcance del asistente.\n\n**Detalle:**\n- La consulta solicita orientacion clinica individual. El asistente responde unicamente sobre protocolos, procedimientos y normativa; derive al profesional tratante.",
+      "abstencion_correcta": true
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "escenario": "E7_falla_y_reintento",
+  "titulo": "Falla transitoria del sistema OIRS - reintento automatico",
+  "folio": "OIRS-2026-0106",
+  "demuestra": [
+    "robustez: una falla de herramienta se convierte en evento",
+    "reintento acotado"
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "eventos": [
+      "reintento"
+    ]
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-05",
+      "resumen": {
+        "folio": "OIRS-2026-0106",
+        "sesion": 1,
+        "estado_caso": "respondido",
+        "prioridad": "media",
+        "tipo": "consulta",
+        "banderas": [],
+        "version_plan": 2,
+        "pasos": {
+          "hecho": 5,
+          "pendiente": 0,
+          "suspendido": 0,
+          "omitido": 0,
+          "fallido": 0
+        },
+        "eventos": [
+          "reintento"
+        ],
+        "fecha_limite": "2026-11-19",
+        "iteraciones_sesion": 6
+      },
+      "bitacora": [
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "caso nuevo clasificado como 'consulta' banderas=[] PII anonimizada={}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "recuperar_contexto",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo: 0 casos y 0 lecciones similares"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "planificar",
+          "tipo": "plan",
+          "detalle": "plan v1: plantilla 'consulta' con 5 pasos -> R1:registrar_caso(p1) > C2:calcular_plazo(p1) > C3:buscar_normativa(p1) > C4:redactar_documento(p2) > C5:actualizar_estado_caso(p3)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> fallido: {'_error': 'FalloSimulado: registrar_caso: servicio no disponible (falla simulada)'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "evaluar",
+          "tipo": "decision",
+          "detalle": "condicion detectada tras R1: ['reintento'] -> replanificar"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "planificar",
+          "tipo": "evento",
+          "detalle": "reintento: FalloSimulado: registrar_caso: servicio no disponible (falla simulada)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "planificar",
+          "tipo": "replan",
+          "detalle": "plan v2 por 'reintento': ↻ R1 registrar_caso se reintenta"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> hecho: {'ok': True}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "C2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-05', 'dias': 10, 'tipo': 'habiles', 'fecha_limite': '2026-11-19'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "C3 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'El cambio se hace efectivo dentro de 10 dias habiles. [FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]', 'citas': ['[FAQ-008 | v5.4 | Preguntas frecuentes de usuarios]', '[PRO-002 | v2.7 | 4. Contrarreferencia]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "C4 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0106/01_respuesta_consulta.md', 'tipo_documento': 'respuesta_consulta', 'caracteres': 335}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "C5 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 1: estado 'respondido', pasos {'hecho': 5, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-05",
+          "nodo": "cierre",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo actualizada (casos=6, lecciones=3)"
+        }
+      ]
+    }
+  ],
+  "plan_final": [
+    {
+      "id": "R1",
+      "accion": "registrar_caso",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso trazable en el sistema OIRS antes de cualquier otra accion"
+    },
+    {
+      "id": "C2",
+      "accion": "calcular_plazo",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Consultas: 10 dias habiles (MAN-003 sec. 2)"
+    },
+    {
+      "id": "C3",
+      "accion": "buscar_normativa",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Responder con respaldo documental o abstenerse"
+    },
+    {
+      "id": "C4",
+      "accion": "redactar_documento",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": ""
+    },
+    {
+      "id": "C5",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Cerrar la consulta como respondida"
+    }
+  ],
+  "hechos_finales": {
+    "fecha_ingreso": "2026-11-05",
+    "fecha_solicitud_completa": "2026-11-05",
+    "casos_similares": [],
+    "fecha_limite_respuesta": "2026-11-19",
+    "inicio_plazo_respuesta": "2026-11-05",
+    "dias_plazo_respuesta": 10
+  },
+  "registro_oirs": {
+    "folio": "OIRS-2026-0106",
+    "tipo": "consulta",
+    "estado": "respondido",
+    "prioridad": "media",
+    "fecha_ingreso": "2026-11-05",
+    "fecha_limite": null,
+    "resumen": "Quiero cambiarme de CESFAM, que documentos necesito y cuanto demora?",
+    "actualizado": "2026-11-05",
+    "tareas": [],
+    "documentos": [
+      {
+        "id": 8,
+        "folio": "OIRS-2026-0106",
+        "tipo": "respuesta_consulta",
+        "ruta": "runtime/salidas/OIRS-2026-0106/01_respuesta_consulta.md",
+        "creado": "2026-11-05"
+      }
+    ]
+  }
+}

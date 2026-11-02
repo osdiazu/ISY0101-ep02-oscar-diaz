@@ -1,0 +1,248 @@
+{
+  "escenario": "E4_consulta_sin_respaldo",
+  "titulo": "Consulta sin respaldo documental - abstencion y derivacion",
+  "folio": "OIRS-2026-0104",
+  "demuestra": [
+    "politica de abstencion heredada de la EP1",
+    "replanificacion: no se redacta respuesta sin fuente"
+  ],
+  "esperado": {
+    "estado_caso": "derivado",
+    "eventos": [
+      "sin_respaldo"
+    ]
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-03",
+      "resumen": {
+        "folio": "OIRS-2026-0104",
+        "sesion": 1,
+        "estado_caso": "derivado",
+        "prioridad": "media",
+        "tipo": "consulta",
+        "banderas": [
+          "sin_respaldo"
+        ],
+        "version_plan": 2,
+        "pasos": {
+          "hecho": 6,
+          "pendiente": 0,
+          "suspendido": 0,
+          "omitido": 2,
+          "fallido": 0
+        },
+        "eventos": [
+          "sin_respaldo"
+        ],
+        "fecha_limite": "2026-11-17",
+        "iteraciones_sesion": 6
+      },
+      "bitacora": [
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "caso nuevo clasificado como 'consulta' banderas=[] PII anonimizada={}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "recuperar_contexto",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo: 0 casos y 0 lecciones similares"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "planificar",
+          "tipo": "plan",
+          "detalle": "plan v1: plantilla 'consulta' con 5 pasos -> R1:registrar_caso(p1) > C2:calcular_plazo(p1) > C3:buscar_normativa(p1) > C4:redactar_documento(p2) > C5:actualizar_estado_caso(p3)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> hecho: {'ok': True}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "C2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-03', 'dias': 10, 'tipo': 'habiles', 'fecha_limite': '2026-11-17'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "C3 [consulta] buscar_normativa -> hecho: {'respaldo': False, 'respuesta_directa': 'No cuento con respaldo documental suficiente para responder esto.', 'citas': []}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "evaluar",
+          "tipo": "decision",
+          "detalle": "condicion detectada tras C3: ['sin_respaldo'] -> replanificar"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "planificar",
+          "tipo": "evento",
+          "detalle": "sin_respaldo: el RAG se abstuvo: no hay evidencia documental suficiente"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "planificar",
+          "tipo": "replan",
+          "detalle": "plan v2 por 'sin_respaldo': - C4 redactar_documento omitido (no se responde sin respaldo documental) | - C5 actualizar_estado_caso omitido (no se responde sin respaldo documental) | + S1 crear_tarea (prio 1): Derivar a quien puede responder | + S2 redactar_documento (prio 2): Acuse al usuario informando la derivacion y el plazo | + S3 actualizar_estado_caso (prio 3): El caso queda derivado, no respondido"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "S1 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 4, 'unidad': 'Direccion (asignar unidad responsable)', 'fecha_limite': '2026-11-17'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "S2 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0104/01_acuse_derivacion.md', 'tipo_documento': 'acuse_derivacion', 'caracteres': 467}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "S3 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'derivado', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 1: estado 'derivado', pasos {'hecho': 6, 'pendiente': 0, 'suspendido': 0, 'omitido': 2, 'fallido': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "cierre",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo actualizada (casos=4, lecciones=3)"
+        }
+      ]
+    }
+  ],
+  "plan_final": [
+    {
+      "id": "R1",
+      "accion": "registrar_caso",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso trazable en el sistema OIRS antes de cualquier otra accion"
+    },
+    {
+      "id": "C2",
+      "accion": "calcular_plazo",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Consultas: 10 dias habiles (MAN-003 sec. 2)"
+    },
+    {
+      "id": "C3",
+      "accion": "buscar_normativa",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Responder con respaldo documental o abstenerse"
+    },
+    {
+      "id": "C4",
+      "accion": "redactar_documento",
+      "prioridad": 2,
+      "estado": "omitido",
+      "origen": "plantilla",
+      "proposito": ""
+    },
+    {
+      "id": "C5",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "omitido",
+      "origen": "plantilla",
+      "proposito": "Cerrar la consulta como respondida"
+    },
+    {
+      "id": "S1",
+      "accion": "crear_tarea",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "replan:sin_respaldo",
+      "proposito": "Derivar a quien puede responder"
+    },
+    {
+      "id": "S2",
+      "accion": "redactar_documento",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "replan:sin_respaldo",
+      "proposito": "Acuse al usuario informando la derivacion y el plazo"
+    },
+    {
+      "id": "S3",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "replan:sin_respaldo",
+      "proposito": "El caso queda derivado, no respondido"
+    }
+  ],
+  "hechos_finales": {
+    "fecha_ingreso": "2026-11-03",
+    "fecha_solicitud_completa": "2026-11-03",
+    "casos_similares": [],
+    "fecha_limite_respuesta": "2026-11-17",
+    "inicio_plazo_respuesta": "2026-11-03",
+    "dias_plazo_respuesta": 10
+  },
+  "registro_oirs": {
+    "folio": "OIRS-2026-0104",
+    "tipo": "consulta",
+    "estado": "derivado",
+    "prioridad": "media",
+    "fecha_ingreso": "2026-11-03",
+    "fecha_limite": null,
+    "resumen": "Hola, el CESFAM tiene estacionamiento para visitas y cual es su tarifa mensual?",
+    "actualizado": "2026-11-03",
+    "tareas": [
+      {
+        "id": 4,
+        "folio": "OIRS-2026-0104",
+        "unidad": "Direccion (asignar unidad responsable)",
+        "descripcion": "Responder consulta sin respaldo en el corpus; evaluar incorporar documento",
+        "fecha_limite": "2026-11-17",
+        "prioridad": "media",
+        "estado": "abierta",
+        "creada": "2026-11-03"
+      }
+    ],
+    "documentos": [
+      {
+        "id": 6,
+        "folio": "OIRS-2026-0104",
+        "tipo": "acuse_derivacion",
+        "ruta": "runtime/salidas/OIRS-2026-0104/01_acuse_derivacion.md",
+        "creado": "2026-11-03"
+      }
+    ]
+  }
+}

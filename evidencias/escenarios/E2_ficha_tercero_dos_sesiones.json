@@ -1,0 +1,385 @@
+{
+  "escenario": "E2_ficha_tercero_dos_sesiones",
+  "titulo": "Copia de ficha pedida por un tercero sin mandato - caso que se suspende y se retoma",
+  "folio": "OIRS-2026-0102",
+  "demuestra": [
+    "memoria de corto plazo (checkpoint por folio)",
+    "suspension y reactivacion de ramas del plan",
+    "continuidad en flujo prolongado"
+  ],
+  "esperado": {
+    "estados_por_sesion": [
+      "pendiente_antecedentes",
+      "respondido"
+    ],
+    "fecha_limite": "2026-11-13"
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-02",
+      "resumen": {
+        "folio": "OIRS-2026-0102",
+        "sesion": 1,
+        "estado_caso": "pendiente_antecedentes",
+        "prioridad": "media",
+        "tipo": "solicitud_ficha",
+        "banderas": [],
+        "version_plan": 2,
+        "pasos": {
+          "hecho": 5,
+          "pendiente": 0,
+          "suspendido": 5,
+          "omitido": 0,
+          "fallido": 0
+        },
+        "eventos": [
+          "faltan_antecedentes"
+        ],
+        "fecha_limite": null,
+        "iteraciones_sesion": 5
+      },
+      "bitacora": [
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "caso nuevo clasificado como 'solicitud_ficha' banderas=[] PII anonimizada={}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "recuperar_contexto",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo: 0 casos y 0 lecciones similares"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "planificar",
+          "tipo": "plan",
+          "detalle": "plan v1: plantilla 'solicitud_ficha' con 8 pasos -> R1:registrar_caso(p1) > F2:buscar_normativa(p1) > F3:verificar_requisitos_ficha(p1) > F4:calcular_plazo(p2) > F5:evaluar_prioridad(p1) > F6:crear_tarea(p2) > F7:redactar_documento(p3) > F8:actualizar_estado_caso(p3)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> hecho: {'ok': True}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F2 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]', 'citas': ['[EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]', '[PRO-006 | v2.2 | 1. Principio]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F3 [razonamiento] verificar_requisitos_ficha -> hecho: {'cumple': False, 'faltantes': ['mandato_notarial'], 'requeridos': ['cedula_identidad', 'mandato_notarial'], 'fundamento': \"PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'.\"}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "evaluar",
+          "tipo": "decision",
+          "detalle": "condicion detectada tras F3: ['faltan_antecedentes'] -> replanificar"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "planificar",
+          "tipo": "evento",
+          "detalle": "faltan_antecedentes: faltan: mandato_notarial"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "planificar",
+          "tipo": "replan",
+          "detalle": "plan v2 por 'faltan_antecedentes': ~ F4 calcular_plazo suspendido | ~ F5 evaluar_prioridad suspendido | ~ F6 crear_tarea suspendido | ~ F7 redactar_documento suspendido | ~ F8 actualizar_estado_caso suspendido | + A1 redactar_documento (prio 1): Pedir los antecedentes faltantes (PRO-006 sec. 2) | + A2 actualizar_estado_caso (prio 2): El caso espera al usuario"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "A1 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0102/01_solicitud_antecedentes.md', 'tipo_documento': 'solicitud_antecedentes', 'caracteres': 461}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "A2 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'pendiente_antecedentes', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 1: estado 'pendiente_antecedentes', pasos {'hecho': 5, 'pendiente': 0, 'suspendido': 5, 'omitido': 0, 'fallido': 0}"
+        }
+      ]
+    },
+    {
+      "fecha": "2026-11-06",
+      "resumen": {
+        "folio": "OIRS-2026-0102",
+        "sesion": 2,
+        "estado_caso": "respondido",
+        "prioridad": "media",
+        "tipo": "solicitud_ficha",
+        "banderas": [],
+        "version_plan": 3,
+        "pasos": {
+          "hecho": 11,
+          "pendiente": 0,
+          "suspendido": 0,
+          "omitido": 0,
+          "fallido": 0
+        },
+        "eventos": [
+          "faltan_antecedentes",
+          "antecedentes_recibidos"
+        ],
+        "fecha_limite": "2026-11-13",
+        "iteraciones_sesion": 6
+      },
+      "bitacora": [
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "sesion 2: se retoma el caso desde el checkpoint (estado previo 'pendiente_antecedentes', plan v2, 12 entradas en bitacora); eventos=['antecedentes_recibidos']"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "planificar",
+          "tipo": "evento",
+          "detalle": "antecedentes_recibidos: antecedentes: ['cedula_identidad', 'mandato_notarial']"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "planificar",
+          "tipo": "replan",
+          "detalle": "plan v3 por 'antecedentes_recibidos': + V1 verificar_requisitos_ficha (prio 1): Revalidar con los antecedentes recibidos | ↺ F4 calcular_plazo reactivado | ↺ F5 evaluar_prioridad reactivado | ↺ F6 crear_tarea reactivado | ↺ F7 redactar_documento reactivado | ↺ F8 actualizar_estado_caso reactivado"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "V1 [razonamiento] verificar_requisitos_ficha -> hecho: {'cumple': True, 'faltantes': [], 'requeridos': ['cedula_identidad', 'mandato_notarial'], 'fundamento': \"PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'.\"}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F4 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-06', 'dias': 5, 'tipo': 'habiles', 'fecha_limite': '2026-11-13'}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F5 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'baja', 'puntaje': 1, 'razones': [\"base por tipo 'solicitud_ficha' = 1\"]}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F6 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 2, 'unidad': 'Archivo de fichas', 'fecha_limite': '2026-11-13'}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F7 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0102/02_respuesta_ficha.md', 'tipo_documento': 'respuesta_ficha', 'caracteres': 530}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "F8 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 2: estado 'respondido', pasos {'hecho': 11, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}"
+        },
+        {
+          "sesion": 2,
+          "fecha": "2026-11-06",
+          "nodo": "cierre",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo actualizada (casos=2, lecciones=1)"
+        }
+      ]
+    }
+  ],
+  "plan_final": [
+    {
+      "id": "R1",
+      "accion": "registrar_caso",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso trazable en el sistema OIRS antes de cualquier otra accion"
+    },
+    {
+      "id": "F2",
+      "accion": "buscar_normativa",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Requisitos de acceso a ficha (PRO-006)"
+    },
+    {
+      "id": "F3",
+      "accion": "verificar_requisitos_ficha",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Validar calidad del solicitante y antecedentes"
+    },
+    {
+      "id": "F4",
+      "accion": "calcular_plazo",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Plazo de entrega: 5 dias habiles desde la solicitud formal completa (PRO-006 sec. 3)"
+    },
+    {
+      "id": "F5",
+      "accion": "evaluar_prioridad",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Priorizar segun riesgo y holgura del plazo"
+    },
+    {
+      "id": "F6",
+      "accion": "crear_tarea",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Derivar la preparacion de la copia"
+    },
+    {
+      "id": "F7",
+      "accion": "redactar_documento",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Informar al solicitante la fecha de entrega"
+    },
+    {
+      "id": "F8",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso respondido con la copia en preparacion"
+    },
+    {
+      "id": "A1",
+      "accion": "redactar_documento",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "replan:faltan_antecedentes",
+      "proposito": "Pedir los antecedentes faltantes (PRO-006 sec. 2)"
+    },
+    {
+      "id": "A2",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "replan:faltan_antecedentes",
+      "proposito": "El caso espera al usuario"
+    },
+    {
+      "id": "V1",
+      "accion": "verificar_requisitos_ficha",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "replan:antecedentes_recibidos",
+      "proposito": "Revalidar con los antecedentes recibidos"
+    }
+  ],
+  "hechos_finales": {
+    "fecha_ingreso": "2026-11-02",
+    "fecha_solicitud_completa": "2026-11-06",
+    "casos_similares": [],
+    "requisitos": {
+      "cumple": true,
+      "faltantes": [],
+      "requeridos": [
+        "cedula_identidad",
+        "mandato_notarial"
+      ],
+      "fundamento": "PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'."
+    },
+    "fecha_limite_respuesta": "2026-11-13",
+    "inicio_plazo_respuesta": "2026-11-06",
+    "dias_plazo_respuesta": 5,
+    "prioridad_detalle": {
+      "nivel": "baja",
+      "puntaje": 1,
+      "razones": [
+        "base por tipo 'solicitud_ficha' = 1"
+      ]
+    }
+  },
+  "registro_oirs": {
+    "folio": "OIRS-2026-0102",
+    "tipo": "solicitud_ficha",
+    "estado": "respondido",
+    "prioridad": "media",
+    "fecha_ingreso": "2026-11-02",
+    "fecha_limite": null,
+    "resumen": "Solicito copia de la ficha clinica de mi hermano para un tramite de licencia.",
+    "actualizado": "2026-11-06",
+    "tareas": [
+      {
+        "id": 2,
+        "folio": "OIRS-2026-0102",
+        "unidad": "Archivo de fichas",
+        "descripcion": "Preparar copia de ficha en formato digital cifrado o impreso con cargo",
+        "fecha_limite": "2026-11-13",
+        "prioridad": "media",
+        "estado": "abierta",
+        "creada": "2026-11-06"
+      }
+    ],
+    "documentos": [
+      {
+        "id": 2,
+        "folio": "OIRS-2026-0102",
+        "tipo": "solicitud_antecedentes",
+        "ruta": "runtime/salidas/OIRS-2026-0102/01_solicitud_antecedentes.md",
+        "creado": "2026-11-02"
+      },
+      {
+        "id": 3,
+        "folio": "OIRS-2026-0102",
+        "tipo": "respuesta_ficha",
+        "ruta": "runtime/salidas/OIRS-2026-0102/02_respuesta_ficha.md",
+        "creado": "2026-11-06"
+      }
+    ]
+  }
+}

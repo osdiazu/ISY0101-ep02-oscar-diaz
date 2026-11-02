@@ -1,0 +1,294 @@
+{
+  "escenario": "E3_reclamo_trato_escalamiento",
+  "titulo": "Reclamo por trato vejatorio - escalamiento el mismo dia",
+  "folio": "OIRS-2026-0103",
+  "demuestra": [
+    "decision basada en conocimiento recuperado (MAN-003 sec. 5)",
+    "insercion de pasos criticos que se adelantan en la cola"
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "prioridad": "critica",
+    "eventos": [
+      "escalamiento_inmediato"
+    ]
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-03",
+      "resumen": {
+        "folio": "OIRS-2026-0103",
+        "sesion": 1,
+        "estado_caso": "respondido",
+        "prioridad": "critica",
+        "tipo": "reclamo",
+        "banderas": [
+          "escalamiento_inmediato",
+          "trato"
+        ],
+        "version_plan": 2,
+        "pasos": {
+          "hecho": 9,
+          "pendiente": 0,
+          "suspendido": 0,
+          "omitido": 0,
+          "fallido": 0
+        },
+        "eventos": [
+          "escalamiento_inmediato"
+        ],
+        "fecha_limite": "2026-11-24",
+        "iteraciones_sesion": 9
+      },
+      "bitacora": [
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "caso nuevo clasificado como 'reclamo' banderas=['trato'] PII anonimizada={}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "recuperar_contexto",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo: 0 casos y 0 lecciones similares"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "planificar",
+          "tipo": "plan",
+          "detalle": "plan v1: plantilla 'reclamo' con 7 pasos -> R1:registrar_caso(p1) > R2:calcular_plazo(p1) > R3:evaluar_prioridad(p1) > R4:buscar_normativa(p2) > T1:buscar_normativa(p1) > R5:redactar_documento(p3) > R6:actualizar_estado_caso(p3)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> hecho: {'ok': True}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-03', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-24'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R3 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'alta', 'puntaje': 6, 'razones': [\"base por tipo 'reclamo' = 2\", \"+4 por 'trato'\"]}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "T1 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamos que involucren presunta negligencia, trato vejatorio o dano fisico se derivan el mismo dia a la Direccion y a Calidad y Seguridad del Paciente. [MAN-003 | v3.1 | 5. Escalamiento]', 'citas': ['[EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]', '[EXT-SUPERSALUD | Reclamo ante la Superintendencia de Salud (sintesis operativa)]', '[MAN-003 | v3.1 | 5. Escalamiento]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "evaluar",
+          "tipo": "decision",
+          "detalle": "condicion detectada tras T1: ['escalamiento_inmediato'] -> replanificar"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "planificar",
+          "tipo": "evento",
+          "detalle": "escalamiento_inmediato: MAN-003 sec. 5 exige derivar el mismo dia a Direccion y Calidad"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "planificar",
+          "tipo": "replan",
+          "detalle": "plan v2 por 'escalamiento_inmediato': + E1 crear_tarea (prio 0): MAN-003 sec. 5: derivacion el mismo dia | + E2 redactar_documento (prio 0): Minuta formal para Direccion"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "E1 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 3, 'unidad': 'Direccion + Calidad y Seguridad del Paciente', 'fecha_limite': '2026-11-03'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "E2 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0103/01_minuta_escalamiento.md', 'tipo_documento': 'minuta_escalamiento', 'caracteres': 512}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R4 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', 'citas': ['[MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R5 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0103/02_respuesta_oirs.md', 'tipo_documento': 'respuesta_oirs', 'caracteres': 1476}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 1: estado 'respondido', pasos {'hecho': 9, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-03",
+          "nodo": "cierre",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo actualizada (casos=3, lecciones=2)"
+        }
+      ]
+    }
+  ],
+  "plan_final": [
+    {
+      "id": "R1",
+      "accion": "registrar_caso",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso trazable en el sistema OIRS antes de cualquier otra accion"
+    },
+    {
+      "id": "R2",
+      "accion": "calcular_plazo",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Plazo de respuesta a reclamo: 15 dias habiles (MAN-003 sec. 2)"
+    },
+    {
+      "id": "R3",
+      "accion": "evaluar_prioridad",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Priorizar segun riesgo y holgura del plazo"
+    },
+    {
+      "id": "R4",
+      "accion": "buscar_normativa",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Fundamento de la respuesta"
+    },
+    {
+      "id": "T1",
+      "accion": "buscar_normativa",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Verificar si el reclamo exige escalamiento (MAN-003 sec. 5)"
+    },
+    {
+      "id": "R5",
+      "accion": "redactar_documento",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Borrador de respuesta con la estructura de MAN-003 sec. 3"
+    },
+    {
+      "id": "R6",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Cerrar el ciclo del agente: queda para firma de jefatura"
+    },
+    {
+      "id": "E1",
+      "accion": "crear_tarea",
+      "prioridad": 0,
+      "estado": "hecho",
+      "origen": "replan:escalamiento_inmediato",
+      "proposito": "MAN-003 sec. 5: derivacion el mismo dia"
+    },
+    {
+      "id": "E2",
+      "accion": "redactar_documento",
+      "prioridad": 0,
+      "estado": "hecho",
+      "origen": "replan:escalamiento_inmediato",
+      "proposito": "Minuta formal para Direccion"
+    }
+  ],
+  "hechos_finales": {
+    "fecha_ingreso": "2026-11-03",
+    "fecha_solicitud_completa": "2026-11-03",
+    "casos_similares": [],
+    "fecha_limite_respuesta": "2026-11-24",
+    "inicio_plazo_respuesta": "2026-11-03",
+    "dias_plazo_respuesta": 15,
+    "prioridad_detalle": {
+      "nivel": "alta",
+      "puntaje": 6,
+      "razones": [
+        "base por tipo 'reclamo' = 2",
+        "+4 por 'trato'"
+      ]
+    }
+  },
+  "registro_oirs": {
+    "folio": "OIRS-2026-0103",
+    "tipo": "reclamo",
+    "estado": "respondido",
+    "prioridad": "critica",
+    "fecha_ingreso": "2026-11-03",
+    "fecha_limite": null,
+    "resumen": "Reclamo: el funcionario de admision me grito y me humillo delante de todos cuando pregunte por mi hora. Exijo que se tomen medidas.",
+    "actualizado": "2026-11-03",
+    "tareas": [
+      {
+        "id": 3,
+        "folio": "OIRS-2026-0103",
+        "unidad": "Direccion + Calidad y Seguridad del Paciente",
+        "descripcion": "Reclamo con presunto trato vejatorio/negligencia: revisar el mismo dia",
+        "fecha_limite": "2026-11-03",
+        "prioridad": "critica",
+        "estado": "abierta",
+        "creada": "2026-11-03"
+      }
+    ],
+    "documentos": [
+      {
+        "id": 4,
+        "folio": "OIRS-2026-0103",
+        "tipo": "minuta_escalamiento",
+        "ruta": "runtime/salidas/OIRS-2026-0103/01_minuta_escalamiento.md",
+        "creado": "2026-11-03"
+      },
+      {
+        "id": 5,
+        "folio": "OIRS-2026-0103",
+        "tipo": "respuesta_oirs",
+        "ruta": "runtime/salidas/OIRS-2026-0103/02_respuesta_oirs.md",
+        "creado": "2026-11-03"
+      }
+    ]
+  }
+}

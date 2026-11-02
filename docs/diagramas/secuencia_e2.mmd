@@ -1,0 +1,22 @@
+sequenceDiagram
+    autonumber
+    actor F as Funcionario OIRS
+    participant A as Agente (LangGraph)
+    participant CP as Checkpointer (folio)
+    participant T as Herramientas
+    Note over F,T: Sesion 1 · 02-11-2026
+    F->>A: "Copia de ficha de mi hermano" (tercero, solo cedula)
+    A->>T: registrar_caso · buscar_normativa(PRO-006)
+    A->>T: verificar_requisitos_ficha
+    T-->>A: cumple=false, falta mandato_notarial
+    A->>A: evento faltan_antecedentes → plan v2<br/>suspende F4–F8, agrega A1–A2
+    A->>T: redactar_documento(solicitud_antecedentes) · estado=pendiente
+    A->>CP: guarda estado completo (plan, hechos, bitacora)
+    Note over F,T: Sesion 2 · 06-11-2026 (otro proceso)
+    F->>A: "Traigo el mandato notarial"
+    CP-->>A: restaura el caso donde quedo
+    A->>A: evento antecedentes_recibidos → plan v3<br/>reactiva F4–F8
+    A->>T: verificar_requisitos_ficha → cumple
+    A->>T: calcular_plazo(06-11, 5 habiles) → 13-11-2026
+    A->>T: crear_tarea · redactar_documento · estado=respondido
+    A->>CP: guarda · memoria largo plazo += caso

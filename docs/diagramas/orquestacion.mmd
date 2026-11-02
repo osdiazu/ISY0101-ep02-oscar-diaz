@@ -1,0 +1,39 @@
+flowchart TB
+    U([Funcionario OIRS / SOME · mensaje + formulario]) --> ING
+    ING[ingreso<br/><i>anonimiza PII · clasifica o retoma el caso</i>]
+    ING --> REC[recuperar_contexto<br/><i>casos y lecciones similares</i>]
+    REC --> PLA[planificar<br/><i>plan inicial · replanificacion por eventos</i>]
+    PLA --> EJE[ejecutar<br/><i>siguiente paso por prioridad + dependencias</i>]
+    EJE --> EVA{evaluar<br/><i>resultado → eventos</i>}
+    EVA -- "continuar" --> EJE
+    EVA -- "replanificar" --> PLA
+    EVA -- "cerrar" --> CIE[cierre<br/><i>compacta bitacora · consolida memoria</i>]
+    CIE --> FIN([fin de sesion · estado guardado])
+
+    EJE -.invoca.-> TOOLS
+    subgraph TOOLS [Herramientas · langchain_core.tools]
+      direction TB
+      T1[CONSULTA<br/>buscar_normativa · consultar_caso<br/>buscar_casos_similares]
+      T2[RAZONAMIENTO<br/>calcular_plazo · verificar_cumplimiento<br/>evaluar_prioridad · verificar_requisitos_ficha]
+      T3[ESCRITURA<br/>registrar_caso · crear_tarea<br/>redactar_documento · actualizar_estado_caso]
+    end
+
+    REC -.lee.-> M2
+    CIE -.escribe.-> M2
+    PLA -.checkpoint.-> M1
+    subgraph MEM [Memoria]
+      direction TB
+      M1[(Corto plazo · SqliteSaver<br/>thread_id = folio)]
+      M2[(Largo plazo · casos + lecciones<br/>busqueda semantica)]
+    end
+
+    classDef nodo fill:#eef4fb,stroke:#2c5d8f,color:#14283d
+    classDef dec fill:#fff4e0,stroke:#b7791f,color:#3d2a07
+    classDef tool fill:#eef8f0,stroke:#2f7a43,color:#123018
+    classDef mem fill:#f3eefb,stroke:#6b46a8,color:#25153d
+    class ING,REC,PLA,EJE,CIE nodo
+    class EVA dec
+    class T1,T2,T3 tool
+    class M1,M2 mem
+    style TOOLS fill:#fafafa,stroke:#9aa5b1
+    style MEM fill:#fafafa,stroke:#9aa5b1

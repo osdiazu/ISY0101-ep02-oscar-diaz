@@ -1,0 +1,294 @@
+{
+  "escenario": "E1_reclamo_ges_incumplido",
+  "titulo": "Reclamo por FCIP no entregado (GES) - deteccion de incumplimiento",
+  "folio": "OIRS-2026-0101",
+  "demuestra": [
+    "herramientas de consulta, razonamiento y escritura",
+    "replanificacion por incumplimiento GES",
+    "escalamiento de prioridad"
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "prioridad": "critica",
+    "eventos": [
+      "incumplimiento_ges"
+    ]
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-02",
+      "resumen": {
+        "folio": "OIRS-2026-0101",
+        "sesion": 1,
+        "estado_caso": "respondido",
+        "prioridad": "critica",
+        "tipo": "reclamo",
+        "banderas": [
+          "ges",
+          "incumplimiento_ges"
+        ],
+        "version_plan": 2,
+        "pasos": {
+          "hecho": 9,
+          "pendiente": 0,
+          "suspendido": 0,
+          "omitido": 0,
+          "fallido": 0
+        },
+        "eventos": [
+          "incumplimiento_ges"
+        ],
+        "fecha_limite": "2026-11-23",
+        "iteraciones_sesion": 9
+      },
+      "bitacora": [
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "caso nuevo clasificado como 'reclamo' banderas=['ges'] PII anonimizada={'rut': 1, 'telefono': 1, 'nombre': 1}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "recuperar_contexto",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo: 0 casos y 0 lecciones similares"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "planificar",
+          "tipo": "plan",
+          "detalle": "plan v1: plantilla 'reclamo' con 8 pasos -> R1:registrar_caso(p1) > R2:calcular_plazo(p1) > R3:evaluar_prioridad(p1) > R4:buscar_normativa(p2) > G1:buscar_normativa(p1) > G2:verificar_cumplimiento(p1) > R5:redactar_documento(p3) > R6:actualizar_estado_caso(p3)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> hecho: {'ok': True}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-02', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-23'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R3 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'alta', 'puntaje': 5, 'razones': [\"base por tipo 'reclamo' = 2\", \"+3 por 'ges'\"]}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "G1 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]', 'citas': ['[EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]', '[PRO-001 | v4.2 | 2. Regla operativa central]', '[PRO-001 | v4.2 | 4. Plazos internos de gestion]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "G2 [razonamiento] verificar_cumplimiento -> hecho: {'estado': 'incumplido', 'fecha_limite': '2026-10-21', 'dias_habiles_de_atraso': 8}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "evaluar",
+          "tipo": "decision",
+          "detalle": "condicion detectada tras G2: ['incumplimiento_ges'] -> replanificar"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "planificar",
+          "tipo": "evento",
+          "detalle": "incumplimiento_ges: FCIP incumplido (limite 2026-10-21, 8 dias habiles de atraso)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "planificar",
+          "tipo": "replan",
+          "detalle": "plan v2 por 'incumplimiento_ges': + G3 crear_tarea (prio 0): Corregir el incumplimiento GES antes de responder | ↑ R5 prioridad 3→1 (caso GES con incumplimiento)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "G3 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 1, 'unidad': 'Subdireccion Clinica / Encargado GES', 'fecha_limite': '2026-11-02'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R4 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', 'citas': ['[MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R5 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0101/01_respuesta_oirs.md', 'tipo_documento': 'respuesta_oirs', 'caracteres': 1840}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 1: estado 'respondido', pasos {'hecho': 9, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-02",
+          "nodo": "cierre",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo actualizada (casos=1, lecciones=1)"
+        }
+      ]
+    }
+  ],
+  "plan_final": [
+    {
+      "id": "R1",
+      "accion": "registrar_caso",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso trazable en el sistema OIRS antes de cualquier otra accion"
+    },
+    {
+      "id": "R2",
+      "accion": "calcular_plazo",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Plazo de respuesta a reclamo: 15 dias habiles (MAN-003 sec. 2)"
+    },
+    {
+      "id": "R3",
+      "accion": "evaluar_prioridad",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Priorizar segun riesgo y holgura del plazo"
+    },
+    {
+      "id": "R4",
+      "accion": "buscar_normativa",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Fundamento de la respuesta"
+    },
+    {
+      "id": "G1",
+      "accion": "buscar_normativa",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Regla operativa GES (PRO-001 sec. 2)"
+    },
+    {
+      "id": "G2",
+      "accion": "verificar_cumplimiento",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Verificar que el FCIP se emitio dentro de 24 horas habiles (1 dia habil)"
+    },
+    {
+      "id": "R5",
+      "accion": "redactar_documento",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Borrador de respuesta con la estructura de MAN-003 sec. 3"
+    },
+    {
+      "id": "R6",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Cerrar el ciclo del agente: queda para firma de jefatura"
+    },
+    {
+      "id": "G3",
+      "accion": "crear_tarea",
+      "prioridad": 0,
+      "estado": "hecho",
+      "origen": "replan:incumplimiento_ges",
+      "proposito": "Corregir el incumplimiento GES antes de responder"
+    }
+  ],
+  "hechos_finales": {
+    "fecha_ingreso": "2026-11-02",
+    "fecha_solicitud_completa": "2026-11-02",
+    "casos_similares": [],
+    "fecha_limite_respuesta": "2026-11-23",
+    "inicio_plazo_respuesta": "2026-11-02",
+    "dias_plazo_respuesta": 15,
+    "prioridad_detalle": {
+      "nivel": "alta",
+      "puntaje": 5,
+      "razones": [
+        "base por tipo 'reclamo' = 2",
+        "+3 por 'ges'"
+      ]
+    },
+    "cumplimiento_fcip": {
+      "estado": "incumplido",
+      "fecha_limite": "2026-10-21",
+      "dias_habiles_de_atraso": 8
+    },
+    "ges": true
+  },
+  "registro_oirs": {
+    "folio": "OIRS-2026-0101",
+    "tipo": "reclamo",
+    "estado": "respondido",
+    "prioridad": "critica",
+    "fecha_ingreso": "2026-11-02",
+    "fecha_limite": null,
+    "resumen": "Reclamo: el 20 de octubre a la paciente [NOMBRE_ANONIMIZADO], RUT [RUT_ANONIMIZADO], le dijeron en el box que tenia sospecha de cancer GES y nunca le entregaron el formulario FCIP ni la citaron. Contacto [TELEFONO_ANONIMIZADO].",
+    "actualizado": "2026-11-02",
+    "tareas": [
+      {
+        "id": 1,
+        "folio": "OIRS-2026-0101",
+        "unidad": "Subdireccion Clinica / Encargado GES",
+        "descripcion": "Emitir/regularizar FCIP de inmediato y registrar en SIGGES; el plazo de oportunidad se cuenta desde el FCIP",
+        "fecha_limite": "2026-11-02",
+        "prioridad": "critica",
+        "estado": "abierta",
+        "creada": "2026-11-02"
+      }
+    ],
+    "documentos": [
+      {
+        "id": 1,
+        "folio": "OIRS-2026-0101",
+        "tipo": "respuesta_oirs",
+        "ruta": "runtime/salidas/OIRS-2026-0101/01_respuesta_oirs.md",
+        "creado": "2026-11-02"
+      }
+    ]
+  }
+}

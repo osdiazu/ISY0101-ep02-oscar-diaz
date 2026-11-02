@@ -1,0 +1,24 @@
+{
+  "id": "E4_consulta_sin_respaldo",
+  "titulo": "Consulta sin respaldo documental - abstencion y derivacion",
+  "demuestra": [
+    "politica de abstencion heredada de la EP1",
+    "replanificacion: no se redacta respuesta sin fuente"
+  ],
+  "folio": "OIRS-2026-0104",
+  "sesiones": [
+    {
+      "fecha": "2026-11-03",
+      "texto": "Hola, el CESFAM tiene estacionamiento para visitas y cual es su tarifa mensual?",
+      "datos": {
+        "tipo": "consulta"
+      }
+    }
+  ],
+  "esperado": {
+    "estado_caso": "derivado",
+    "eventos": [
+      "sin_respaldo"
+    ]
+  }
+}

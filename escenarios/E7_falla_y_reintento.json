@@ -1,0 +1,27 @@
+{
+  "id": "E7_falla_y_reintento",
+  "titulo": "Falla transitoria del sistema OIRS - reintento automatico",
+  "demuestra": [
+    "robustez: una falla de herramienta se convierte en evento",
+    "reintento acotado"
+  ],
+  "folio": "OIRS-2026-0106",
+  "simular_fallo": {
+    "registrar_caso": 1
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-05",
+      "texto": "Quiero cambiarme de CESFAM, que documentos necesito y cuanto demora?",
+      "datos": {
+        "tipo": "consulta"
+      }
+    }
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "eventos": [
+      "reintento"
+    ]
+  }
+}

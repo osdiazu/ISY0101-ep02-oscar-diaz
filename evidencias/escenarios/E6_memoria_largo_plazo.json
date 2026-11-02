@@ -1,0 +1,239 @@
+{
+  "escenario": "E6_memoria_largo_plazo",
+  "titulo": "Reclamo similar a uno anterior - la memoria de largo plazo cambia el plan",
+  "folio": "OIRS-2026-0105",
+  "demuestra": [
+    "recuperacion semantica de lecciones entre casos",
+    "paso preventivo agregado por memoria (origen=memoria)"
+  ],
+  "esperado": {
+    "estado_caso": "respondido",
+    "paso_origen_memoria": true
+  },
+  "sesiones": [
+    {
+      "fecha": "2026-11-04",
+      "resumen": {
+        "folio": "OIRS-2026-0105",
+        "sesion": 1,
+        "estado_caso": "respondido",
+        "prioridad": "media",
+        "tipo": "reclamo",
+        "banderas": [],
+        "version_plan": 1,
+        "pasos": {
+          "hecho": 8,
+          "pendiente": 0,
+          "suspendido": 0,
+          "omitido": 0,
+          "fallido": 0
+        },
+        "eventos": [],
+        "fecha_limite": "2026-11-26",
+        "iteraciones_sesion": 8
+      },
+      "bitacora": [
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ingreso",
+          "tipo": "decision",
+          "detalle": "caso nuevo clasificado como 'reclamo' banderas=[] PII anonimizada={}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "recuperar_contexto",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo: 2 casos y 2 lecciones similares (mejor: OIRS-2026-0101 sim=0.611)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "planificar",
+          "tipo": "plan",
+          "detalle": "plan v1: plantilla 'reclamo' con 6 pasos; memoria: leccion similar (0.558) del folio OIRS-2026-0101 -> se agrega verificacion preventiva de FCIP/GES -> R1:registrar_caso(p1) > R2:calcular_plazo(p1) > R3:evaluar_prioridad(p1) > R4:buscar_normativa(p2) > G1:buscar_normativa(p1) > G2:verificar_cumplimiento(p1) > R5:redactar_documento(p3) > R6:actualizar_estado_caso(p3)"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R1 [escritura] registrar_caso -> hecho: {'ok': True}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R2 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-04', 'dias': 15, 'tipo': 'habiles', 'fecha_limite': '2026-11-26'}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R3 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'baja', 'puntaje': 2, 'razones': [\"base por tipo 'reclamo' = 2\"]}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "G1 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Toda sospecha GES debe quedar registrada en el Formulario de Constancia de Informacion al Paciente GES (FCIP) dentro de las mismas 24 horas habiles de la atencion en que se formula la sospecha. [PRO-001 | v4.2 | 2. Regla operativa central]', 'citas': ['[EXT-LEY19966 | Ley 19.966, Regimen General de Garantias en Salud (extracto)]', '[PRO-001 | v4.2 | 2. Regla operativa central]', '[PRO-001 | v4.2 | 4. Plazos internos de gestion]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "G2 [razonamiento] verificar_cumplimiento -> hecho: {'estado': 'cumplido', 'fecha_limite': '2026-10-29', 'dias_habiles_de_atraso': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R4 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'Reclamo: 15 dias habiles desde el ingreso. [MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', 'citas': ['[MAN-003 | v3.1 | 2. Plazos de respuesta comprometidos]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R5 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0105/01_respuesta_oirs.md', 'tipo_documento': 'respuesta_oirs', 'caracteres': 1559}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "ejecutar",
+          "tipo": "tool",
+          "detalle": "R6 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "cierre",
+          "tipo": "decision",
+          "detalle": "fin de sesion 1: estado 'respondido', pasos {'hecho': 8, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}"
+        },
+        {
+          "sesion": 1,
+          "fecha": "2026-11-04",
+          "nodo": "cierre",
+          "tipo": "memoria",
+          "detalle": "memoria largo plazo actualizada (casos=5, lecciones=3)"
+        }
+      ]
+    }
+  ],
+  "plan_final": [
+    {
+      "id": "R1",
+      "accion": "registrar_caso",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Dejar el caso trazable en el sistema OIRS antes de cualquier otra accion"
+    },
+    {
+      "id": "R2",
+      "accion": "calcular_plazo",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Plazo de respuesta a reclamo: 15 dias habiles (MAN-003 sec. 2)"
+    },
+    {
+      "id": "R3",
+      "accion": "evaluar_prioridad",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Priorizar segun riesgo y holgura del plazo"
+    },
+    {
+      "id": "R4",
+      "accion": "buscar_normativa",
+      "prioridad": 2,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Fundamento de la respuesta"
+    },
+    {
+      "id": "G1",
+      "accion": "buscar_normativa",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "memoria",
+      "proposito": "Regla operativa GES (PRO-001 sec. 2)"
+    },
+    {
+      "id": "G2",
+      "accion": "verificar_cumplimiento",
+      "prioridad": 1,
+      "estado": "hecho",
+      "origen": "memoria",
+      "proposito": "Verificar que el FCIP se emitio dentro de 24 horas habiles (1 dia habil)"
+    },
+    {
+      "id": "R5",
+      "accion": "redactar_documento",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Borrador de respuesta con la estructura de MAN-003 sec. 3"
+    },
+    {
+      "id": "R6",
+      "accion": "actualizar_estado_caso",
+      "prioridad": 3,
+      "estado": "hecho",
+      "origen": "plantilla",
+      "proposito": "Cerrar el ciclo del agente: queda para firma de jefatura"
+    }
+  ],
+  "hechos_finales": {
+    "fecha_ingreso": "2026-11-04",
+    "fecha_solicitud_completa": "2026-11-04",
+    "casos_similares": [
+      "OIRS-2026-0101",
+      "OIRS-2026-0103"
+    ],
+    "fecha_limite_respuesta": "2026-11-26",
+    "inicio_plazo_respuesta": "2026-11-04",
+    "dias_plazo_respuesta": 15,
+    "prioridad_detalle": {
+      "nivel": "baja",
+      "puntaje": 2,
+      "razones": [
+        "base por tipo 'reclamo' = 2"
+      ]
+    },
+    "cumplimiento_fcip": {
+      "estado": "cumplido",
+      "fecha_limite": "2026-10-29",
+      "dias_habiles_de_atraso": 0
+    }
+  },
+  "registro_oirs": {
+    "folio": "OIRS-2026-0105",
+    "tipo": "reclamo",
+    "estado": "respondido",
+    "prioridad": "media",
+    "fecha_ingreso": "2026-11-04",
+    "fecha_limite": null,
+    "resumen": "Reclamo: a mi padre le dijeron que tenia sospecha de cancer y nunca le entregaron el formulario ni lo citaron.",
+    "actualizado": "2026-11-04",
+    "tareas": [],
+    "documentos": [
+      {
+        "id": 7,
+        "folio": "OIRS-2026-0105",
+        "tipo": "respuesta_oirs",
+        "ruta": "runtime/salidas/OIRS-2026-0105/01_respuesta_oirs.md",
+        "creado": "2026-11-04"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "lexico": {
+    "recall@4": 1,
+    "mrr": 0.899,
+    "precision_chunks@4": 0.618,
+    "n": 19
+  },
+  "semantico": {
+    "recall@4": 1,
+    "mrr": 0.899,
+    "precision_chunks@4": 0.539,
+    "n": 19
+  },
+  "hibrido": {
+    "recall@4": 1,
+    "mrr": 0.899,
+    "precision_chunks@4": 0.605,
+    "n": 19
+  }
+}

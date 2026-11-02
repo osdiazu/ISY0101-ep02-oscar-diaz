@@ -1,0 +1,17 @@
+# --- Nucleo RAG (EP1) ---
+numpy>=1.24
+scikit-learn>=1.3
+
+# --- Framework de agentes (EP2) ---
+langgraph>=0.6,<2                 # orquestacion: StateGraph, reducers, checkpointing
+langgraph-checkpoint-sqlite>=2.0  # memoria de corto plazo persistente (SqliteSaver)
+langchain-core>=0.3,<2            # definicion de herramientas (@tool, StructuredTool)
+
+# --- Opcional: generacion con LLM real (Anthropic) ---
+anthropic>=0.39
+
+# --- Opcional: embeddings densos de produccion (RAG y memoria de largo plazo) ---
+# sentence-transformers>=3.0
+
+# --- Desarrollo ---
+pytest>=7.4

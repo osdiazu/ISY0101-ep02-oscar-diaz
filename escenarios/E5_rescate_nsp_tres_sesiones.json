@@ -1,0 +1,43 @@
+{
+  "id": "E5_rescate_nsp_tres_sesiones",
+  "titulo": "Rescate de paciente cronico - condiciones que cambian en el tiempo",
+  "demuestra": [
+    "tres sesiones sobre el mismo caso",
+    "replanificacion por resultado de la llamada",
+    "recalculo de plazos por feriado nuevo"
+  ],
+  "folio": "SOME-2026-0201",
+  "sesiones": [
+    {
+      "fecha": "2026-11-02",
+      "texto": "Paciente del programa cardiovascular con tres inasistencias consecutivas sin aviso a sus controles.",
+      "datos": {
+        "tipo": "rescate_nsp",
+        "inasistencias_consecutivas": 3,
+        "edad": 82
+      }
+    },
+    {
+      "fecha": "2026-11-09",
+      "texto": "Se llamo tres veces al telefono registrado y no hubo contacto.",
+      "datos": {
+        "resultado_llamada": "sin_contacto"
+      }
+    },
+    {
+      "fecha": "2026-11-10",
+      "texto": "La autoridad decreta feriado regional el 20 de noviembre.",
+      "datos": {
+        "feriado_nuevo": "2026-11-20"
+      }
+    }
+  ],
+  "esperado": {
+    "estados_por_sesion": [
+      "en_seguimiento",
+      "en_seguimiento",
+      "en_seguimiento"
+    ],
+    "fecha_limite_final": "2026-12-02"
+  }
+}
