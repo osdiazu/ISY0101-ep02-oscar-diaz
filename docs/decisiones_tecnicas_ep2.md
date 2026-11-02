@@ -3,8 +3,8 @@
 Continúa la bitácora de la EP1 (D1–D10 en el repositorio de la EP1). Cada entrada registra el
 problema, las alternativas, la decisión, la evidencia y el costo asumido.
 
-> Nota para el equipo: esta bitácora documenta *qué* se decidió y con qué evidencia. La
-> justificación técnica del informe debe redactarse con palabras propias del equipo (pauta, uso de IA).
+> Nota para el autor: esta bitácora documenta *qué* se decidió y con qué evidencia. La
+> justificación técnica del informe debe redactarse con palabras propias (pauta, uso de IA).
 
 ---
 

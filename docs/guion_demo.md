@@ -1,19 +1,19 @@
 # Guion de la presentación (20 min: 10 de exposición + 10 de preguntas)
 
-Reparto sugerido para participación equitativa: **A = Oscar**, **B = Integrante 2**.
+Presentación individual: Oscar Díaz Ulloa expone y ejecuta la demo.
 
-| Min | Diapositiva | Quién | Qué decir / hacer |
-|---|---|---|---|
-| 0:00 | 1 Portada | A | Equipo, caso y qué cambia respecto a la EP1 |
-| 0:30 | 2 Problema | A | Un caso dura varios días y exige plazos, prioridades y registro |
-| 1:30 | 3 Orquestación | B | Recorrer los nodos del grafo y la arista condicional de `evaluar` |
-| 2:45 | 4 Herramientas | B | Tres familias; por qué separar escritura y calcular plazos en código |
-| 3:45 | 5 Memoria | A | Checkpoint por folio (E2) y aprendizaje entre casos (E6) |
-| 5:00 | 6 Planificación | B | Prioridad + dependencias; eventos → nueva versión del plan |
-| 6:15 | 7 **Demo en vivo** | A ejecuta, B narra | Ver abajo |
-| 8:45 | 8 Resultados | A | 49/49 pruebas, 7/7 escenarios, cobertura 0,947, 0 fugas |
-| 9:30 | 9 Decisiones | A y B | Justificación con palabras propias y evidencia |
-| 10:15 | 10 Cierre | B | Limitaciones y próximos pasos; abrir preguntas |
+| Min | Diapositiva | Qué decir / hacer |
+|---|---|---|
+| 0:00 | 1 Portada | Autor, caso y qué cambia respecto a la EP1 |
+| 0:30 | 2 Problema | Un caso dura varios días y exige plazos, prioridades y registro |
+| 1:30 | 3 Orquestación | Recorrer los nodos del grafo y la arista condicional de `evaluar` |
+| 2:45 | 4 Herramientas | Tres familias; por qué separar escritura y calcular plazos en código |
+| 3:45 | 5 Memoria | Checkpoint por folio (E2) y aprendizaje entre casos (E6) |
+| 5:00 | 6 Planificación | Prioridad + dependencias; eventos → nueva versión del plan |
+| 6:15 | 7 **Demo en vivo** | Ver abajo |
+| 8:45 | 8 Resultados | 49/49 pruebas, 7/7 escenarios, cobertura 0,947, 0 fugas |
+| 9:30 | 9 Decisiones | Justificación con palabras propias y evidencia |
+| 10:15 | 10 Cierre | Limitaciones y próximos pasos; abrir preguntas |
 
 ## Demo en vivo (2 min 30 s)
 

@@ -10,7 +10,7 @@ Un mismo caso puede durar varios días y varias sesiones sin perder continuidad.
 
 > **Evaluación Parcial N°2 — ISY0101 Ingeniería de Soluciones con IA (Duoc UC).**
 > Continúa el proyecto de la EP1: [ISY0101-ep01-oscar-diaz](https://github.com/osdiazu/ISY0101-ep01-oscar-diaz).
-> Integrantes: **Oscar Díaz Ulloa** · **[Integrante 2]**
+> Autor: **Oscar Díaz Ulloa** (trabajo individual)
 
 ---
 
@@ -259,9 +259,9 @@ documentos generados en `evidencias/documentos_generados/`. Índice de evidencia
 ## 12. Declaración de uso de IA
 
 Se usó **Claude (Anthropic)** como asistente para apoyar la programación de los módulos del
-agente, generar los diagramas Mermaid y redactar la documentación técnica. El equipo revisó,
+agente, generar los diagramas Mermaid y redactar la documentación técnica. El autor revisó,
 ejecutó y validó todo el contenido con las pruebas y los escenarios incluidos. Las conclusiones,
-las justificaciones de diseño del informe y las reflexiones individuales son de autoría propia
-del equipo, como exige la pauta. *(Completar o ajustar según el uso real del equipo.)*
+las justificaciones de diseño del informe y la reflexión individual son de autoría propia
+del autor, como exige la pauta. *(Completar o ajustar según el uso real.)*
 
 Uso académico. Los extractos normativos son referenciales; las fuentes oficiales son las indicadas.
