@@ -262,6 +262,6 @@ Se usó **Claude (Anthropic)** como asistente para apoyar la programación de lo
 agente, generar los diagramas Mermaid y redactar la documentación técnica. El autor revisó,
 ejecutó y validó todo el contenido con las pruebas y los escenarios incluidos. Las conclusiones,
 las justificaciones de diseño del informe y la reflexión individual son de autoría propia
-del autor, como exige la pauta. *(Completar o ajustar según el uso real.)*
+del autor, como exige la pauta.
 
 Uso académico. Los extractos normativos son referenciales; las fuentes oficiales son las indicadas.
