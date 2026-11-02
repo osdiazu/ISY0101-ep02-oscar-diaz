@@ -86,6 +86,11 @@ def cmd_todos(args) -> None:
 
 
 def main(argv=None) -> None:
+    for flujo in (sys.stdout, sys.stderr):   # consola de Windows: evitar UnicodeEncodeError con los iconos
+        try:
+            flujo.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     ap = argparse.ArgumentParser(description="Agente de gestion de casos CESFAM (EP2)")
     sub = ap.add_subparsers(dest="cmd", required=True)
     e = sub.add_parser("escenario", help="ejecuta un escenario JSON (una o varias sesiones)")
