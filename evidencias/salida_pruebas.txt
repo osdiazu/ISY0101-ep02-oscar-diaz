@@ -47,4 +47,4 @@ tests/test_rag_ep1.py::test_agente_se_abstiene_sin_evidencia PASSED      [ 93%]
 tests/test_rag_ep1.py::test_agente_no_filtra_pii_en_la_respuesta PASSED  [ 95%]
 tests/test_rag_ep1.py::test_traza_es_serializable PASSED                 [ 97%]
 tests/test_rag_ep1.py::test_evidencia_respeta_top_k PASSED               [100%]
-============================== 49 passed in 1.85s ==============================
+============================== 49 passed in 1.49s ==============================

@@ -196,7 +196,10 @@ Además, el tope de 30 iteraciones por sesión y el `recursion_limit` del grafo 
 | E7 | Falla transitoria del sistema OIRS | Reintento automático | respondido |
 
 Salida completa en `evidencias/demo_escenarios.txt`; trazas JSON en `evidencias/escenarios/`;
-documentos generados en `evidencias/documentos_generados/`.
+documentos generados en `evidencias/documentos_generados/`. Índice de evidencias en
+[`evidencias/README.md`](evidencias/README.md).
+
+![Escenario E2 en dos sesiones](evidencias/capturas/02_escenario_E2.png)
 
 ---
 

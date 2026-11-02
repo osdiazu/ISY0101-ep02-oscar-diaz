@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-11-02T17:36:06",
+  "modo_llm": "extractivo",
+  "backend_denso": "tfidf-svd (fallback local)",
+  "n_chunks": 38,
+  "preguntas_con_respaldo": 19,
+  "recall@4": 1.0,
+  "mrr": 0.899,
+  "precision_citas_promedio": 1.0,
+  "cobertura_dato_clave": 0.947,
+  "abstencion_correcta": "3/3",
+  "fugas_pii": 0,
+  "latencia_media_ms": 1.1
+}

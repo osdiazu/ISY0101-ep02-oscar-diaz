@@ -1,0 +1,12 @@
+
+[casos]
+  0.458  OIRS-2026-0105                       reclamo: Reclamo: a mi padre le dijeron que tenia sospecha de cancer y nunca le entregaron
+  0.306  OIRS-2026-0101                       reclamo: Reclamo: el 20 de octubre a la paciente [NOMBRE_ANONIMIZADO], RUT [RUT_ANONIMIZAD
+  0.097  OIRS-2026-0102                       solicitud_ficha: Solicito copia de la ficha clinica de mi hermano para un tramite de licen
+  0.081  OIRS-2026-0103                       reclamo: Reclamo: el funcionario de admision me grito y me humillo delante de todos cuando
+  0.043  OIRS-2026-0106                       consulta: Quiero cambiarme de CESFAM, que documentos necesito y cuanto demora?
+
+[lecciones]
+  0.288  OIRS-2026-0101:incumplimiento_ges    reclamo: Reclamo: el 20 de octubre a la paciente [NOMBRE_ANONIMIZADO], RUT [RUT_ANONIMIZAD
+  0.074  OIRS-2026-0103:escalamiento_inmediato reclamo: Reclamo: el funcionario de admision me grito y me humillo delante de todos cuando
+  0.012  OIRS-2026-0104:sin_respaldo          consulta: Hola, el CESFAM tiene estacionamiento para visitas y cual es su tarifa mensual? 

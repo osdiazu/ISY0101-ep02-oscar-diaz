@@ -1,0 +1,37 @@
+folio=OIRS-2026-0102 sesiones=2 estado=respondido prioridad=media plan=v3
+  R1   hecho       p1 registrar_caso             [plantilla] Dejar el caso trazable en el sistema OIRS antes de cualquier
+  F2   hecho       p1 buscar_normativa           [plantilla] Requisitos de acceso a ficha (PRO-006)
+  F3   hecho       p1 verificar_requisitos_ficha [plantilla] Validar calidad del solicitante y antecedentes
+  F4   hecho       p2 calcular_plazo             [plantilla] Plazo de entrega: 5 dias habiles desde la solicitud formal c
+  F5   hecho       p1 evaluar_prioridad          [plantilla] Priorizar segun riesgo y holgura del plazo
+  F6   hecho       p2 crear_tarea                [plantilla] Derivar la preparacion de la copia
+  F7   hecho       p3 redactar_documento         [plantilla] Informar al solicitante la fecha de entrega
+  F8   hecho       p3 actualizar_estado_caso     [plantilla] Dejar el caso respondido con la copia en preparacion
+  A1   hecho       p1 redactar_documento         [replan:faltan_antecedentes] Pedir los antecedentes faltantes (PRO-006 sec. 2)
+  A2   hecho       p2 actualizar_estado_caso     [replan:faltan_antecedentes] El caso espera al usuario
+  V1   hecho       p1 verificar_requisitos_ficha [replan:antecedentes_recibidos] Revalidar con los antecedentes recibidos
+
+bitacora:
+  ◆ [s1 ingreso           ] caso nuevo clasificado como 'solicitud_ficha' banderas=[] PII anonimizada={}
+  ◎ [s1 recuperar_contexto] memoria largo plazo: 0 casos y 0 lecciones similares
+  ▤ [s1 planificar        ] plan v1: plantilla 'solicitud_ficha' con 8 pasos -> R1:registrar_caso(p1) > F2:buscar_normativa(p1) > F3:verificar_requisitos_ficha(p1) > F4:calcular_plazo(p2) > F5:evaluar_prioridad(p1) > F6:crear_tarea(p2) > F7:redactar_documento(p3) > F8:actualizar_estado_caso(p3)
+  ▸ [s1 ejecutar          ] R1 [escritura] registrar_caso -> hecho: {'ok': True}
+  ▸ [s1 ejecutar          ] F2 [consulta] buscar_normativa -> hecho: {'respaldo': True, 'respuesta_directa': 'La copia de ficha se entrega en un plazo maximo de 5 dias habiles desde la solicitud formal, en formato digital cifrado o impreso con cargo de retiro. [PRO-006 | v2.2 | 3. Plazo de entrega]', 'citas': ['[EXT-LEY20584 | Ley 20.584 (extracto de trabajo)]', '[PRO-006 | v2.2 | 1. Principio]', '[PRO-006 | v2.2 | 3. Plazo de entrega]']}
+  ▸ [s1 ejecutar          ] F3 [razonamiento] verificar_requisitos_ficha -> hecho: {'cumple': False, 'faltantes': ['mandato_notarial'], 'requeridos': ['cedula_identidad', 'mandato_notarial'], 'fundamento': "PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'."}
+  ◆ [s1 evaluar           ] condicion detectada tras F3: ['faltan_antecedentes'] -> replanificar
+  ⚡ [s1 planificar        ] faltan_antecedentes: faltan: mandato_notarial
+  ↻ [s1 planificar        ] plan v2 por 'faltan_antecedentes': ~ F4 calcular_plazo suspendido | ~ F5 evaluar_prioridad suspendido | ~ F6 crear_tarea suspendido | ~ F7 redactar_documento suspendido | ~ F8 actualizar_estado_caso suspendido | + A1 redactar_documento (prio 1): Pedir los antecedentes faltantes (PRO-006 sec. 2) | + A2 actualizar_estado_caso (prio 2): El caso espera al usuario
+  ▸ [s1 ejecutar          ] A1 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0102/01_solicitud_antecedentes.md', 'tipo_documento': 'solicitud_antecedentes', 'caracteres': 461}
+  ▸ [s1 ejecutar          ] A2 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'pendiente_antecedentes', 'tareas_cerradas': 0}
+  ◆ [s1 cierre            ] fin de sesion 1: estado 'pendiente_antecedentes', pasos {'hecho': 5, 'pendiente': 0, 'suspendido': 5, 'omitido': 0, 'fallido': 0}
+  ◆ [s2 ingreso           ] sesion 2: se retoma el caso desde el checkpoint (estado previo 'pendiente_antecedentes', plan v2, 12 entradas en bitacora); eventos=['antecedentes_recibidos']
+  ⚡ [s2 planificar        ] antecedentes_recibidos: antecedentes: ['cedula_identidad', 'mandato_notarial']
+  ↻ [s2 planificar        ] plan v3 por 'antecedentes_recibidos': + V1 verificar_requisitos_ficha (prio 1): Revalidar con los antecedentes recibidos | ↺ F4 calcular_plazo reactivado | ↺ F5 evaluar_prioridad reactivado | ↺ F6 crear_tarea reactivado | ↺ F7 redactar_documento reactivado | ↺ F8 actualizar_estado_caso reactivado
+  ▸ [s2 ejecutar          ] V1 [razonamiento] verificar_requisitos_ficha -> hecho: {'cumple': True, 'faltantes': [], 'requeridos': ['cedula_identidad', 'mandato_notarial'], 'fundamento': "PRO-006 v2.2, sec. 2 'Quien puede solicitar copia'."}
+  ▸ [s2 ejecutar          ] F4 [razonamiento] calcular_plazo -> hecho: {'fecha_inicio': '2026-11-06', 'dias': 5, 'tipo': 'habiles', 'fecha_limite': '2026-11-13'}
+  ▸ [s2 ejecutar          ] F5 [razonamiento] evaluar_prioridad -> hecho: {'nivel': 'baja', 'puntaje': 1, 'razones': ["base por tipo 'solicitud_ficha' = 1"]}
+  ▸ [s2 ejecutar          ] F6 [escritura] crear_tarea -> hecho: {'ok': True, 'tarea_id': 2, 'unidad': 'Archivo de fichas', 'fecha_limite': '2026-11-13'}
+  ▸ [s2 ejecutar          ] F7 [escritura] redactar_documento -> hecho: {'ok': True, 'ruta': 'runtime/salidas/OIRS-2026-0102/02_respuesta_ficha.md', 'tipo_documento': 'respuesta_ficha', 'caracteres': 530}
+  ▸ [s2 ejecutar          ] F8 [escritura] actualizar_estado_caso -> hecho: {'ok': True, 'estado': 'respondido', 'tareas_cerradas': 0}
+  ◆ [s2 cierre            ] fin de sesion 2: estado 'respondido', pasos {'hecho': 11, 'pendiente': 0, 'suspendido': 0, 'omitido': 0, 'fallido': 0}
+  ◎ [s2 cierre            ] memoria largo plazo actualizada (casos=2, lecciones=1)
